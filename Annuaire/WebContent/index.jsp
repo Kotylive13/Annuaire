@@ -7,9 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<html>
     <h1>Example - Spring Application PhiPhi</h1>
     <p>This is my test.</p>
-</html>
 </body>
 </html>
