@@ -38,4 +38,3 @@
 	</div>
 </body>
 </html>
-<c:redirect url="/welcome.htm"/>
