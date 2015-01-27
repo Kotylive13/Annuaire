@@ -1,4 +1,3 @@
-<%@ include file="/WEB-INF/jsp/include.jsp"%>
 <%@ page pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>

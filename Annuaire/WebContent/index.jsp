@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -7,17 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Identification</title>
 	<link type="text/css" rel="stylesheet" href="style.css" />
-	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function() {
-		$('input[name=type]').change(function() {
-			if ($('input[name=type]:checked').val() == 'administrateur')
-				$('#label').text('Mot de passe');
-			else
-				$('#label').text('Identifiant');
-		});
-	});
-	</script>
 </head>
 <body>
 	<div class="main">
