@@ -1,8 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:url var="add"    value="/message/add" />
-<c:url var="remove" value="/message/removeAll" />
-<c:url var="list"   value="/message/list" />
+<c:url var="add"    value="/actions/message/add" />
+<c:url var="remove" value="/actions/message/removeAll" />
+<c:url var="list"   value="/actions/message/list" />
 
 <html>
 <body>

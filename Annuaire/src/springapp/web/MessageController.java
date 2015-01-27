@@ -22,6 +22,11 @@ public class MessageController {
     IMessageManager messageManger;
 
     protected final Log logger = LogFactory.getLog(getClass());
+    
+    @RequestMapping(value = "/welcome")
+    public ModelAndView welcome() {
+        return new ModelAndView("message");
+    }
 
     @RequestMapping(value = "/add")
     public ModelAndView add(@RequestParam(required = true) String text) {
