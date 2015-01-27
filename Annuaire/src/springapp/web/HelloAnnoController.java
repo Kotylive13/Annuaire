@@ -36,9 +36,14 @@ public class HelloAnnoController {
         return new ModelAndView("hello", "now", param);
     }
     
+    @RequestMapping(value = "/connexion")
+    public ModelAndView connecter() {
+        return new ModelAndView("connexion");
+    }
+    
     @RequestMapping(value = "/annuaire")
     public ModelAndView afficherAnnuaire() {
-        return new ModelAndView("annuaire");
+        return new ModelAndView("afficherAnnuaire");
     }
     
 }
