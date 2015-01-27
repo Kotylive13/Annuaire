@@ -7,7 +7,6 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Identification</title>
 	<link type="text/css" rel="stylesheet" href="style.css" />
-
 	<script	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function() {
@@ -39,3 +38,4 @@
 	</div>
 </body>
 </html>
+<c:redirect url="/welcome.htm"/>
