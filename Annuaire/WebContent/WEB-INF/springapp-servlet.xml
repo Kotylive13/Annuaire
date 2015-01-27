@@ -22,7 +22,7 @@
 	    <property name="prefix" value="/WEB-INF/jsp/"></property>
 	    <property name="suffix" value=".jsp"></property>
 	</bean>
-			
-	<jee:jndi-lookup id="messageManager"
-        jndi-name="java:global/Annuaire/MessageManager" />
+	
+	<jee:jndi-lookup id="personManager"
+        jndi-name="java:global/Annuaire/PersonManager" />
 </beans>
