@@ -2,39 +2,37 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
-        <title>Création d'un client</title>
-        <link type="text/css" rel="stylesheet" href="../style.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Création</title>
+        <link type="text/css" rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <div>
-            <form method="get" action="creationPersonne">
-                <fieldset>
-                    <legend>Informations client</legend>
-    
-                    <label for="nomClient">Nom <span class="requis">*</span></label>
-                    <input type="text" id="nomClient" name="nomClient" value="" size="20" maxlength="20" />
-                    <br />
-                    
-                    <label for="prenomClient">Prénom </label>
-                    <input type="text" id="prenomClient" name="prenomClient" value="" size="20" maxlength="20" />
-                    <br />
-    
-                    <label for="adresseClient">Adresse de livraison <span class="requis">*</span></label>
-                    <input type="text" id="adresseClient" name="adresseClient" value="" size="20" maxlength="20" />
-                    <br />
-    
-                    <label for="telephoneClient">Numéro de téléphone <span class="requis">*</span></label>
-                    <input type="text" id="telephoneClient" name="telephoneClient" value="" size="20" maxlength="20" />
-                    <br />
-                    
-                    <label for="emailClient">Adresse email</label>
-                    <input type="email" id="emailClient" name="emailClient" value="" size="20" maxlength="60" />
-                    <br />
-                </fieldset>
-                <input type="submit" value="Valider"  />
-                <input type="reset" value="Remettre à zéro" /> <br />
-            </form>
+        <div class="menu_bar">
+            <ul>
+                <li class="left_button">Accueil</li>
+                <li class="left_button">Editer fiche personnelle</li>
+                <li class="left_button">Ajouter personne</li>
+                <li class="right_button">Déconnexion</li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="column">
+                <h1>Ajout personne</h1>
+                <div class="head">
+                    <img src="user.png" alt=""/>
+                </div>
+                <form method="post" action="actions/annuaire">
+                    <input type="text" class="text" value="NOM" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'NOM';}">
+                    <input type="text" class="text" value="PRENOM" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PRENOM';}">
+                    <input type="text" class="text" value="MAIL" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MAIL';}">
+                    <input type="text" class="text" value="SITE WEB" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'SITE WEB';}">
+                    <input type="text" class="text" value="DATE DE NAISSANCE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'DATE DE NAISSANCE';}">
+                    <input type="text" class="text" value="MOT DE PASSE" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'MOT DE PASSE';}">
+                    <div class="submit">
+                        <input type="submit" value="Valider" >
+                    </div>
+                </form>
+            </div>
         </div>
     </body>
 </html>
