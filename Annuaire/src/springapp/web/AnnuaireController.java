@@ -3,6 +3,8 @@ package springapp.web;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +31,12 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/detail")
-    public ModelAndView detail(@RequestParam(required = true) int id) {
+    public ModelAndView detail(@RequestParam(required = true) String id) {
         return new ModelAndView("detail", "person", personManager.find(id));
     }
     
     @RequestMapping(value = "/edit")
-    public ModelAndView edit(@RequestParam(required = true) int id) {
+    public ModelAndView edit(@RequestParam(required = true) String id) {
         return new ModelAndView("edit", "person", personManager.find(id));
     }
     
@@ -65,7 +67,26 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/connection")
-    public ModelAndView connectio() {
+    public ModelAndView connection() {
         return new ModelAndView("connection");
+    }
+
+    @RequestMapping(value = "/login")
+    public String login(
+    		@RequestParam(required = true) String login,
+    		@RequestParam(required = true) String password,
+    		HttpSession session) {
+    	
+    	if(login.equals("admin") && password.equals("admin") ||
+    	   personManager.find(login).getPassword().equals(password))
+    		session.setAttribute("user", login);
+    	
+        return "redirect:annuaire.htm";
+    }
+    
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session) {    	
+    	session.invalidate();    	
+        return "redirect:annuaire.htm";
     }
 }

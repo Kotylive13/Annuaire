@@ -32,7 +32,7 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
-	public Person find(Integer id) {
+	public Person find(String id) {
 		return em.find(Person.class, id);
 	}
 
@@ -42,7 +42,7 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
-	public int delete(int id) {
+	public int delete(String id) {
 		return em.createQuery("delete from PERSON p where p.id = :id")
 				.setParameter("id", id).executeUpdate();
 	}
