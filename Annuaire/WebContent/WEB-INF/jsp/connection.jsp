@@ -19,7 +19,7 @@
 				</div>
 				<form method="post" action="/Annuaire/login.htm">
 				<input name="login" type="text" id="loginField" name="loginField" value="LOGIN" onfocus="this.value = '';"/>
-				<input name="password" type="password" id="passwordField" name="passwordField" value="Password" onfocus="this.value = '';"/>
+				<input name="password" type="password" id="passwordField" name="passwordField" value="******" onfocus="this.value = '';"/>
 				<div class="submit">
 					<input type="submit" value="Connexion" />
 				</div>	
