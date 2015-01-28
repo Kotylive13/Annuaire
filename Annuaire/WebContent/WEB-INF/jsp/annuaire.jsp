@@ -17,7 +17,7 @@
 				</div>	        
 				<ul>
 					<c:forEach var="person" items="${persons}">
-					<li><c:out value="${person.firstName}"/> <c:out value="${person.lastName}"/></li>
+					<li><a href="/Annuaire/detail.htm?id=<c:out value="${person.id}"/>"><c:out value="${person.firstName}"/> <c:out value="${person.lastName}"/></a></li>
 					</c:forEach>
 		        </ul>
 		    </div>
