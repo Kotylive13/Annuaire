@@ -3,6 +3,8 @@ package springapp.web;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,7 +67,19 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/connection")
-    public ModelAndView connectio() {
+    public ModelAndView connection() {
         return new ModelAndView("connection");
+    }
+
+    @RequestMapping(value = "/connect")
+    public String connect(
+    		@RequestParam(required = true) String login,
+    		@RequestParam(required = true) String password,
+    		HttpSession session) {
+    	
+    	if(login.equals("admin") && password.equals("admin"))
+    		session.setAttribute("user", "admin");
+    	
+        return "redirect:annuaire.htm";
     }
 }

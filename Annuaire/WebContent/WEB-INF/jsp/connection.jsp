@@ -17,9 +17,10 @@
 			<div class="head">
 				<img src="user.png" alt=""/>
 			</div>
-			<form method="post" action="actions/annuaire">
-				<input type="text" class="text" value="LOGIN" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'LOGIN';}" >
-				<input type="password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}">
+			<form method="post" action="/Annuaire/connect.htm">
+				<input name="login" type="text" class="text" value="LOGIN" onfocus="this.value = '';" >
+				<input name="password" type="password" value="*******" onfocus="this.value = '';">
+				
 				<div class="submit">
 					<input type="submit" value="Connexion" >
 				</div>	

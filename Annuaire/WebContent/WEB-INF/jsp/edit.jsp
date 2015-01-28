@@ -40,7 +40,7 @@
                     <h2>Date de naissance</h2>
                     <input name="birthDate" type="text" class="text" value="<c:out value="${birthDate}"/>" />
                     <h2>Mot de passe</h2>
-                    <input name="password" type="text" class="text" value="<c:out value="${password}"/>" />
+                    <input name="password" type="password" value="<c:out value="${password}"/>" />
                     <h2>Groupe</h2>
                     <input name="groupe" type="text" class="text" value="<c:out value="${groupe}"/>" />
                     <div class="submit">
