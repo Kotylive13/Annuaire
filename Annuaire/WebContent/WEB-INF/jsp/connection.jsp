@@ -20,15 +20,15 @@
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
-				<form method="post" action="/Annuaire/login.htm">
-				<input name="login" type="text" id="loginField" name="loginField" value="LOGIN" onfocus="this.value = '';"/>
-				<input name="password" type="password" id="passwordField" name="passwordField" value="******" onfocus="this.value = '';"/>
-				<div class="submit">
-					<input type="submit" value="Connexion" />
-				</div>	
-			</form>
-			<p class="bottom"><a href="#">Mot de passe oublié ?</a></p>
-			<script type="text/javascript" src="script.js"></script>
+				<form id="loginForm" method="post" action="/Annuaire/login.htm">
+					<input id="login" name="login" type="text" value="LOGIN" onfocus="this.value = '';"/>
+					<input id="password" name="password" type="password" value="******" onfocus="this.value = '';"/>
+					<div class="submit">
+						<input type="submit" value="Connexion" />
+					</div>	
+				</form>
+				<p class="bottom"><a href="#">Mot de passe oublié ?</a></p>
+				<script type="text/javascript" src="script.js"></script>
 			</div>
 		</div>
 	</body>

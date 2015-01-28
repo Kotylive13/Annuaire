@@ -21,11 +21,11 @@
 $( "#loginForm" ).validate({
 	errorElement: 'div',
   	rules: {
-    	loginField: {
+    	login: {
       		required: true,
       		digits: true
     	},
-    	passwordField: {
+    	password: {
       		required: true
     	}
   	}
