@@ -52,12 +52,20 @@ body{
     text-align:center;
 }
 
-.menu_bar ul li, .menu_bar a{
+.menu_bar ul li {
 	padding : 0 1.0em;
 	color: #FFF;
 }
 
-.menu_bar ul li:hover, .menu_bar a:hover{
+.menu_bar ul li:hover {
+	color: #9bbac3;
+}
+
+.menu_bar a {
+	color: #eee;
+}
+
+.menu_bar a:hover {
 	color: #9bbac3;
 }
 
@@ -133,12 +141,12 @@ img:hover{
 text-align: center;
 }
 
-.main p a, .main li a {
-	color: #665d51;
+.bottom a {
+	color:#665d51;
 }
 
-.main p a:hover, .main li a:hover{
-	color:#9bbac3;
+.bottom a:hover {
+	color:#cb694d;
 }
 
 input[type="text"], input[type="password"], .main li, .label p {
@@ -158,14 +166,12 @@ input[type="text"], input[type="password"], .main li, .label p {
 	-webkit-appearance:none;
 }
 
-.main li:hover {
+.main a {
+	color:#665d51 ;
+}
+
+.main a:hover {
 	color:#9bbac3;
-	border:2px solid #9bbac3;
-	transition:0.5s;
-	-webkit-transition:0.5s;
-	-moz-transition:0.5s;
-	-o-transition:0.5s;
-	-ms-transition:	0.5s;
 }
 
  input[type="text"]:focus, input[type="password"]:focus{
