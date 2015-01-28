@@ -24,8 +24,8 @@
 				<div class="submit">
 					<input type="submit" value="Connexion" >
 				</div>	
-				<p><a href="#">Mot de passe oublié ?</a></p>
 			</form>
+			<p class="bottom"><a href="#">Mot de passe oublié ?</a></p>
 		</div>
 	</div>
 </body>
