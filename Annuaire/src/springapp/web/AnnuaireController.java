@@ -61,6 +61,6 @@ public class AnnuaireController {
     	p.setGroupe(groupe);
     	
         personManager.save(p);
-        return new ModelAndView("editPerson");
+        return new ModelAndView("edit");
     }
 }
