@@ -54,7 +54,7 @@ public class PersonController {
     	p.setGroup(group);
     	
         personManager.save(p);
-        return new ModelAndView(TODO);
+        return /*new ModelAndView(TODO);*/ null;
     }
 
     protected final Log logger = LogFactory.getLog(getClass()); 
@@ -63,6 +63,6 @@ public class PersonController {
     public ModelAndView remove(@RequestParam(required = true) int id) {    
     	int n = personManager.delete(id);
     	if(n == 1) logger.info("Person number " + id + " deleted");
-        return new ModelAndView(TODO);
+        return /*new ModelAndView(TODO);*/ null;
     }
 }
