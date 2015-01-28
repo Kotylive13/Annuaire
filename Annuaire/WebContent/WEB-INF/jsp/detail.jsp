@@ -25,6 +25,8 @@
 					<div class="label"><p><c:out value="${person.lastName}"/></p></div>
 					<h2>Site web</h2>	
 					<div class="label"><p><c:out value="${person.website}"/></p></div>
+					<button name="editButton" class="modifButton" >Editer</button>
+					<button name="removeButton" class="supprButton">Supprimer</button>
 				</div>
 		    </div>
 		</div>
