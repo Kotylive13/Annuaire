@@ -31,7 +31,7 @@ public class PersonController {
     	return new ModelAndView("showDetails", "person", personManager.find(id));
     }
     
-    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MMM-yyyy");
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     
     @RequestMapping(value = "/save")
     public ModelAndView save(
