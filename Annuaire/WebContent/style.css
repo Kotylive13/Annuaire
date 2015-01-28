@@ -215,6 +215,15 @@ input[type="submit"]:hover{
 	color:#fff;
 }
 
+form {
+	position: relative;
+}
+
+div[class="error"] {
+	color:#cb694d;
+	padding-bottom: 7%;
+}
+
 /*-----start-responsive-design------*/
 @media (max-width:1440px){
 	.login-form {
