@@ -35,7 +35,7 @@ public class Person {
 	private String password;
 	
 	@Column
-	private String group;
+	private String groupe;
 	
 	public Person() {
 	}
@@ -96,11 +96,11 @@ public class Person {
 		this.password = password;
 	}
 
-	public String getGroup() {
-		return group;
+	public String getGroupe() {
+		return groupe;
 	}
 
-	public void setGroup(String group) {
-		this.group = group;
+	public void setGroupe(String groupe) {
+		this.groupe = groupe;
 	}
 }

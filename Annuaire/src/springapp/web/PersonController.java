@@ -41,7 +41,7 @@ public class PersonController {
     		@RequestParam(required = true) String website,
     		@RequestParam(required = true) String birthDate,
     		@RequestParam(required = true) String password,
-    		@RequestParam(required = true) String group
+    		@RequestParam(required = true) String groupe
     		) throws ParseException {
     	
     	Person p = new Person();
@@ -51,7 +51,7 @@ public class PersonController {
     	p.setWebsite(website == "" ? null : website);
     	p.setBirthDate(formatter.parse(birthDate));
     	p.setPassword(password);
-    	p.setGroup(group);
+    	p.setGroupe(groupe);
     	
         personManager.save(p);
         return /*new ModelAndView(TODO);*/ null;
