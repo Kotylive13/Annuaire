@@ -25,7 +25,7 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/create")
     public ModelAndView createPerson() {
-        return new ModelAndView("editPerson");
+        return new ModelAndView("edit");
     }
     
     @RequestMapping(value = "/detail")
