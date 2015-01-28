@@ -24,7 +24,7 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/create")
-    public ModelAndView createPerson() {
+    public ModelAndView create() {
         return new ModelAndView("edit");
     }
     
@@ -34,7 +34,7 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/edit")
-    public ModelAndView editPerson(@RequestParam(required = true) int id) {
+    public ModelAndView edit(@RequestParam(required = true) int id) {
         return new ModelAndView("edit", "person", personManager.find(id));
     }
     
@@ -62,5 +62,10 @@ public class AnnuaireController {
     	
         personManager.save(p);
         return new ModelAndView("edit");
+    }
+    
+    @RequestMapping(value = "/connection")
+    public ModelAndView connectio() {
+        return new ModelAndView("connection");
     }
 }
