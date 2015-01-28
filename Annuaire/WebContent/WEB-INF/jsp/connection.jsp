@@ -18,8 +18,8 @@
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
 				<form method="post" action="/Annuaire/login.htm">
-				<input type="text" id="loginField" name="loginField" value="LOGIN" onfocus="this.value = '';"/>
-				<input type="password" id="passwordField" name="passwordField" value="Password" onfocus="this.value = '';"/>
+				<input name="login" type="text" id="loginField" name="loginField" value="LOGIN" onfocus="this.value = '';"/>
+				<input name="password" type="password" id="passwordField" name="passwordField" value="Password" onfocus="this.value = '';"/>
 				<div class="submit">
 					<input type="submit" value="Connexion" />
 				</div>	
