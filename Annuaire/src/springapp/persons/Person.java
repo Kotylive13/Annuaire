@@ -7,6 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.apache.bval.constraints.Email;
 
 @Entity
 @Table(name = "PERSON")
@@ -14,27 +20,42 @@ public class Person {
 
 	@Id
     @GeneratedValue
+	@NotNull
     private int id;
 	
 	@Column
+	@NotNull
+    @Size(min = 1, message = "Le prénom est obligatoire")
+	@Pattern(regexp = "[a-z-A-Z]*", message = "Le prénom contient des caractères invalides")
 	private String firstName;
 	
 	@Column
+	@NotNull
+    @Size(min = 1, message = "Le nom est obligatoire")
+	@Pattern(regexp = "[a-z-A-Z]*", message = "Le nom contient des caractères invalides")
 	private String lastName;
 	
 	@Column
+	@NotNull
+	@Email(message = "L'adresse mail n'est pas valide")
 	private String mail;
 	
 	@Column
 	private String website;
 	
 	@Column
+	@NotNull
+	@Past(message = "La date de naissance doit être passée")
 	private Date birthDate;
 	
 	@Column
+	@NotNull
+	@Size(min = 1, message = "Le mot de passe est obligatoire")
 	private String password;
 	
 	@Column
+	@NotNull
+	@Size(min = 1, message = "Le groupe est obligatoire")
 	private String group;
 	
 	public Person() {
