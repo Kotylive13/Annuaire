@@ -9,6 +9,9 @@
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 	<title>Identification</title>
 	<link type="text/css" rel="stylesheet" href="style.css" />
+	<script type="text/javascript" src="jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="jquery.validate.js"></script>
+	<script type="text/javascript" src="messages_fr.js"></script>
 </head>
 	<body>	
 		<div class="main">
