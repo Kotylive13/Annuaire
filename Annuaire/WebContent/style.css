@@ -105,7 +105,7 @@ img:hover{
 	-ms-transition:0.8s;
 }
 
-.main{
+.main {
 	position:relative;
 }
 
@@ -137,16 +137,16 @@ img:hover{
 	padding: 0 0 9% 0;
 }
 
-.main p {
-text-align: center;
-}
-
 .bottom a {
 	color:#665d51;
 }
 
 .bottom a:hover {
 	color:#cb694d;
+}
+
+.main p {
+text-align: center;
 }
 
 input[type="text"], input[type="password"], .main li, .label p {
@@ -166,11 +166,11 @@ input[type="text"], input[type="password"], .main li, .label p {
 	-webkit-appearance:none;
 }
 
-.main a {
+.main li a {
 	color:#665d51 ;
 }
 
-.main a:hover {
+.main li a:hover {
 	color:#9bbac3;
 }
 
