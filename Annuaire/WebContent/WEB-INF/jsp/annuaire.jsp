@@ -9,6 +9,8 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
+        <jsp:include page="menu.jsp" />
+        
     	<div class="main">
     		<div class="column">
 				<h1>Annuaire</h1>

@@ -11,10 +11,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "PERSON")
 public class Person {
-
+	
 	@Id
-    @GeneratedValue
-    private int id;
+	@GeneratedValue
+	private int id;
 	
 	@Column
 	private String firstName;
@@ -36,7 +36,7 @@ public class Person {
 	
 	@Column
 	private String groupe;
-	
+
 	public Person() {
 	}
 

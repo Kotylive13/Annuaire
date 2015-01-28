@@ -10,6 +10,7 @@
 	<link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 <body>
+
 	<div class="main">
 		<div class="column">
 			<h1>Bienvenue</h1>

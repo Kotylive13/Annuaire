@@ -9,14 +9,8 @@
         <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
-        <div class="menu_bar">
-            <ul>
-                <li class="left_button">Accueil</li>
-                <li class="left_button">Editer fiche personnelle</li>
-                <li class="left_button">Ajouter personne</li>
-                <li class="right_button">Déconnexion</li>
-            </ul>
-        </div>
+        <jsp:include page="menu.jsp" />
+        
         <div class="main">
             <div class="column">
                 <h1>Ajout personne</h1>
