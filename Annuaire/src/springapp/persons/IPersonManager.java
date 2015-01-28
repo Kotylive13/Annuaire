@@ -8,11 +8,11 @@ public interface IPersonManager {
 	Collection<Person> findAll();
 
 	// lire une personne
-	Person find(Integer id);
+	Person find(String id);
 
 	// modification ou ajout d'une nouvelle personne
 	void save(Person p);
 	
 	// suppresion d'une personne
-	int delete(int id);
+	int delete(String id);
 }

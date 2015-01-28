@@ -31,12 +31,12 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/detail")
-    public ModelAndView detail(@RequestParam(required = true) int id) {
+    public ModelAndView detail(@RequestParam(required = true) String id) {
         return new ModelAndView("detail", "person", personManager.find(id));
     }
     
     @RequestMapping(value = "/edit")
-    public ModelAndView edit(@RequestParam(required = true) int id) {
+    public ModelAndView edit(@RequestParam(required = true) String id) {
         return new ModelAndView("edit", "person", personManager.find(id));
     }
     
@@ -71,15 +71,22 @@ public class AnnuaireController {
         return new ModelAndView("connection");
     }
 
-    @RequestMapping(value = "/connect")
-    public String connect(
+    @RequestMapping(value = "/login")
+    public String login(
     		@RequestParam(required = true) String login,
     		@RequestParam(required = true) String password,
     		HttpSession session) {
     	
-    	if(login.equals("admin") && password.equals("admin"))
-    		session.setAttribute("user", "admin");
+    	if(login.equals("admin") && password.equals("admin") ||
+    	   personManager.find(login).getPassword().equals(password))
+    		session.setAttribute("user", login);
     	
+        return "redirect:annuaire.htm";
+    }
+    
+    @RequestMapping(value = "/logout")
+    public String logout(HttpSession session) {    	
+    	session.invalidate();    	
         return "redirect:annuaire.htm";
     }
 }

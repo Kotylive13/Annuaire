@@ -14,7 +14,7 @@ public class Person {
 	
 	@Id
 	@GeneratedValue
-	private int id;
+	private String id;
 	
 	@Column
 	private String firstName;
@@ -40,11 +40,11 @@ public class Person {
 	public Person() {
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
