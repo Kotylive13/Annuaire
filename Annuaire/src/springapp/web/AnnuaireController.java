@@ -33,7 +33,7 @@ public class AnnuaireController {
         return new ModelAndView("detail", "person", personManager.find(id));
     }
     
-    @RequestMapping(value = "/editPerson")
+    @RequestMapping(value = "/edit")
     public ModelAndView editPerson(@RequestParam(required = true) int id) {
         return new ModelAndView("edit", "person", personManager.find(id));
     }

@@ -24,8 +24,7 @@
                     <img alt="" src="user.png" />
                 </div>
                 
-                <c:choose>
-				  <c:when test="${not empty person}">
+                <c:if test="${not empty person}">
 				  	<c:set var="firstName" value="${person.firstName}"/>
 				  	<c:set var="lastName" value="${person.lastName}"/>
 				  	<c:set var="mail" value="${person.mail}"/>
@@ -33,26 +32,23 @@
 				  	<c:set var="birthDate" value="${person.birthDate}"/>
 				  	<c:set var="password" value="${person.password}"/>
 				  	<c:set var="groupe" value="${person.groupe}"/>
-				  </c:when>
-				  <c:otherwise>
-				    <c:set var="firstName" value="PRENOM"/>
-				  	<c:set var="lastName" value="NOM"/>
-				  	<c:set var="mail" value="MAIL"/>
-				  	<c:set var="website" value="SITE WEB"/>
-				  	<c:set var="birthDate" value="DATE DE NAISSANCE"/>
-				  	<c:set var="password" value="MOT DE PASSE"/>
-				  	<c:set var="groupe" value="GROUPE"/>
-				  </c:otherwise>
-				</c:choose>
+				</c:if>
                 
                 <form action="/Annuaire/save.htm" method="post">
-                    <input name="firstName" type="text" onblur="if (this.value == '') {this.value = 'PRENOM';}" onfocus="if (this.value == 'PRENOM') {this.value = '';}" value="<c:out value="${firstName}"/>" class="text" />
-                    <input name="lastName" type="text" onblur="if (this.value == '') {this.value = 'NOM';}" onfocus="if (this.value == 'NOM') {this.value = '';}" value="<c:out value="${lastName}"/>" class="text" />
-                    <input name="mail" type="text" onblur="if (this.value == '') {this.value = 'MAIL';}" onfocus="if (this.value == 'MAIL') {this.value = '';}" value="<c:out value="${mail}"/>" class="text" />
-                    <input name="website" type="text" onblur="if (this.value == '') {this.value = 'SITE WEB';}" onfocus="if (this.value == 'SITE WEB') {this.value = '';}" value="<c:out value="${website}"/>" class="text" />
-                    <input name="birthDate" type="text" onblur="if (this.value == '') {this.value = 'DATE DE NAISSANCE';}" onfocus="if (this.value == 'DATE DE NAISSANCE') {this.value = '';}" value="<c:out value="${birthDate}"/>" class="text" />
-                    <input name="password" type="text" onblur="if (this.value == '') {this.value = 'MOT DE PASSE';}" onfocus="if (this.value == 'MOT DE PASSE') {this.value = '';}" value="<c:out value="${password}"/>" class="text" />
-                    <input name="groupe" type="text" onblur="if (this.value == '') {this.value = 'GROUPE';}" onfocus="if (this.value == 'GROUPE') {this.value = '';}" value="<c:out value="${groupe}"/>" class="text" />
+                	<h2>Prénom</h2>
+                    <input name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
+                    <h2>Nom</h2>
+                    <input name="lastName" type="text" class="text" value="<c:out value="${lastName}"/>" />
+                    <h2>Mail</h2>
+                    <input name="mail" type="text" class="text" value="<c:out value="${mail}"/>" />
+                    <h2>Site web</h2>
+                    <input name="website" type="text" class="text" value="<c:out value="${website}"/>" />
+                    <h2>Date de naissance</h2>
+                    <input name="birthDate" type="text" class="text" value="<c:out value="${birthDate}"/>" />
+                    <h2>Mot de passe</h2>
+                    <input name="password" type="text" class="text" value="<c:out value="${password}"/>" />
+                    <h2>Groupe</h2>
+                    <input name="groupe" type="text" class="text" value="<c:out value="${groupe}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>
