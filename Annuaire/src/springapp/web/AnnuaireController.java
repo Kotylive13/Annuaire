@@ -44,16 +44,22 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/save")
     public ModelAndView save(
+    		@RequestParam(required = true) String id,
     		@RequestParam(required = true) String firstName,
     		@RequestParam(required = true) String lastName,
     		@RequestParam(required = true) String mail,
     		@RequestParam(required = true) String website,
     		@RequestParam(required = true) String birthDate,
     		@RequestParam(required = true) String password,
-    		@RequestParam(required = true) String groupe
-    		) throws ParseException {
+    		@RequestParam(required = true) String groupe,
+    		HttpSession session) throws ParseException {
     	
-    	Person p = new Person();
+    	Person p;
+    	
+    	if(id == "")
+    		p = new Person();
+    	else p = personManager.find(id);
+    	
     	p.setFirstName(firstName);
     	p.setLastName(lastName);
     	p.setMail(mail);

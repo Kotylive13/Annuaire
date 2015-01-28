@@ -20,6 +20,7 @@
 				</div>
                 
                 <c:if test="${not empty person}">
+                	<c:set var="id" value="${person.id}"/>
 				  	<c:set var="firstName" value="${person.firstName}"/>
 				  	<c:set var="lastName" value="${person.lastName}"/>
 				  	<c:set var="mail" value="${person.mail}"/>
@@ -30,6 +31,7 @@
 				</c:if>
                 
                 <form action="/Annuaire/save.htm" method="post">
+                	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Prénom</h2>
                     <input name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
                     <h2>Nom</h2>

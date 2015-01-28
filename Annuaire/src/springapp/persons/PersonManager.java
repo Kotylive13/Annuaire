@@ -32,13 +32,13 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
-	public Person find(String id) {
+	public Person find(String id) {		 
 		return em.find(Person.class, id);
 	}
 
 	@Override
 	public void save(Person p) {
-		em.persist(p);
+		em.merge(p);
 	}
 
 	@Override
