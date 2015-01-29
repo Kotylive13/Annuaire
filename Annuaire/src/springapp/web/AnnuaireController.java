@@ -151,11 +151,14 @@ public class AnnuaireController {
         return "redirect:annuaire_persons.htm";
     }
     
-    @RequestMapping(value = "/loginForgot")
-    public ModelAndView login_forgot(@RequestParam(required = true) String id) {
-
-    	System.out.println(id);
-
+    @RequestMapping(value = "/login_forgot")
+    public ModelAndView login_forgot() {
+    	return new ModelAndView("login_forgot");
+    }
+    
+    @RequestMapping(value = "/generate_login")
+    public ModelAndView generate_login() {
+    	System.out.println("---------------------------coucouuuuuuuuuuuuuuuuuu");
     	return new ModelAndView("connection");
     }
 }

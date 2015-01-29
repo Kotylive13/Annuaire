@@ -27,7 +27,7 @@
 						<input type="submit" value="Connexion" />
 					</div>	
 				</form>
-				<p class="bottom"><a href="/Annuaire/login_forgot">Mot de passe oublié ?</a></p>
+				<p class="bottom"><a href="/Annuaire/login_forgot.htm">Mot de passe oublié ?</a></p>
 				<script type="text/javascript" src="script.js"></script>
 			</div>
 		</div>
