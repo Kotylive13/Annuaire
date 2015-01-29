@@ -52,8 +52,6 @@
                     	<c:forEach var="groupe" items="${groupes}">
 							<option><c:out value="${groupe.name}"/>"></option>
 						</c:forEach>
-                        <option>toto</option>
-                        <option>tata</option>
                     </select>
                     <div class="submit">
                         <input type="submit" value="Valider" />
