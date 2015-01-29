@@ -39,7 +39,7 @@ $( "#editForm" ).validate({
     	lastName: {
       		required: true
     	},
-    	email: {
+    	mail: {
     		required: true,
     		email: true
     	},
