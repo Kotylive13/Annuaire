@@ -26,14 +26,16 @@
 				</c:forEach>
 			</ul>
 
-			<c:if test="${sessionScope.user == 'admin'}">
-				<a href="/Annuaire/edit_groupe.htm?id=<c:out value="${groupe.id}"/>">
-					<button class="editButton">Editer</button>
-				</a>
-				<a href="/Annuaire/delete_groupe.htm?id=<c:out value="${groupe.id}"/>">
-					<button class="removeButton">Supprimer</button>
-				</a>
-			</c:if>
+			<div class="list">
+				<c:if test="${sessionScope.user == 'admin'}">
+					<a href="/Annuaire/edit_groupe.htm?id=<c:out value="${groupe.id}"/>">
+						<button class="editButton">Editer</button>
+					</a>
+					<a href="/Annuaire/delete_groupe.htm?id=<c:out value="${groupe.id}"/>">
+						<button class="removeButton">Supprimer</button>
+					</a>
+				</c:if>
+			</div>
 		</div>
 	</div>
 </body>
