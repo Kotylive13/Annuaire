@@ -55,7 +55,6 @@
                         <option>toto</option>
                         <option>tata</option>
                     </select>
-                    <input name="groupe" type="text" value="<c:out value="${groupe}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>
