@@ -150,4 +150,12 @@ public class AnnuaireController {
     	session.invalidate();    	
         return "redirect:annuaire_persons.htm";
     }
+    
+    @RequestMapping(value = "/loginForgot")
+    public ModelAndView login_forgot(@RequestParam(required = true) String id) {
+
+    	System.out.println(id);
+
+    	return new ModelAndView("connection");
+    }
 }
