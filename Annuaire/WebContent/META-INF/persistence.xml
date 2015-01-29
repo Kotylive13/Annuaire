@@ -3,11 +3,12 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
           http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
     version="1.0">
-
+  
     <persistence-unit name="myData" transaction-type="JTA">
         <properties>
-            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="openjpa.jdbc.SynchronizeMappings"
+                value="buildSchema(ForeignKeys=true)"/>
         </properties>
-    </persistence-unit>
+    </persistence-unit> 
 
 </persistence>

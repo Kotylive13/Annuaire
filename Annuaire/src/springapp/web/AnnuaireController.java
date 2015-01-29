@@ -40,7 +40,7 @@ public class AnnuaireController {
         return new ModelAndView("edit", "person", personManager.find(id));
     }
     
-    private SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+    private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     
     @RequestMapping(value = "/save")
     public ModelAndView save(

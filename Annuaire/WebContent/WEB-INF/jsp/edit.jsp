@@ -25,7 +25,7 @@
 				  	<c:set var="lastName" value="${person.lastName}"/>
 				  	<c:set var="mail" value="${person.mail}"/>
 				  	<c:set var="website" value="${person.website}"/>
-				  	<fmt:formatDate var="birthDate" pattern="dd-MM-yyyy" value="${person.birthDate}"/>
+				  	<fmt:formatDate var="birthDate" pattern="dd/MM/yyyy" value="${person.birthDate}"/>
 				  	<c:set var="password" value="${person.password}"/>
 				  	<c:set var="groupe" value="${person.groupe}"/>
 				</c:if>
