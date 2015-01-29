@@ -32,6 +32,9 @@ $( "#loginForm" ).validate({
     	},
     	lastName: {
       		required: true
+    	},
+    	birthDate: {
+    		required: true
     	}
   	}
 });
