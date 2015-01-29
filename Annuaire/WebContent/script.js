@@ -53,6 +53,10 @@ $( "#editForm" ).validate({
       password: {
         required: true
       },
+      passwordConfirm: {
+        required: true,
+        equalTo: "#password"
+      },
       groupe: {
         required: true
       }

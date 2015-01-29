@@ -46,7 +46,9 @@
                     <h2>Date de naissance</h2>
                     <input name="birthDate" type="text" value="<c:out value="${birthDate}"/>" />
                     <h2>Mot de passe</h2>
-                    <input name="password" type="password" value="<c:out value="${password}"/>" />
+                    <input id="password" name="password" type="password" value="<c:out value="${password}"/>" />
+                    <h2>Confirmation</h2>
+                    <input name="passwordConfirm" type="password" />
                     <h2>Groupe</h2>
                     <select name="groupe">
                     	<c:forEach var="groupe" items="${groupes}">
