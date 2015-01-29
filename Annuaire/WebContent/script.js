@@ -47,7 +47,8 @@ $( "#editForm" ).validate({
     		url: true
     	},
     	birthDate: {
-    		required: true
+    		required: true,
+    		date: true
     	},
     	password: {
     		required: true
