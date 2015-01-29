@@ -19,42 +19,42 @@
 });*/
 
 $( "#loginForm" ).validate({
-	errorElement: 'div',
-  	rules: {
-    	login: {
-      		required: true
-    	},
-    	password: {
-      		required: true
-    	}
-  	}
+  errorElement: 'div',
+    rules: {
+      login: {
+          required: true
+      },
+      password: {
+          required: true
+      }
+    }
 });
 
 $( "#editForm" ).validate({
-	errorElement: 'div',
-  	rules: {
-    	firstName: {
-      		required: true
-    	},
-    	lastName: {
-      		required: true
-    	},
-    	mail: {
-    		required: true,
-    		email: true
-    	},
-    	website: {
-    		url: true
-    	},
-    	birthDate: {
-    		required: true,
-    		date: true
-    	},
-    	password: {
-    		required: true
-    	},
-    	groupe: {
-    		required: true
-    	}
-  	}
+  errorElement: 'div',
+    rules: {
+      firstName: {
+          required: true
+      },
+      lastName: {
+          required: true
+      },
+      mail: {
+        required: true,
+        email: true
+      },
+      website: {
+        url: true
+      },
+      birthDate: {
+        required: true,
+        date: true
+      },
+      password: {
+        required: true
+      },
+      groupe: {
+        required: true
+      }
+    }
 });

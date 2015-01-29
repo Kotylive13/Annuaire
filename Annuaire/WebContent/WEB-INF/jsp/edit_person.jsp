@@ -48,6 +48,13 @@
                     <h2>Mot de passe</h2>
                     <input name="password" type="password" value="<c:out value="${password}"/>" />
                     <h2>Groupe</h2>
+                    <select name="groupe">
+                    	<c:forEach var="groupe" items="${groupes}">
+							<option><c:out value="${groupe.name}"/>"></option>
+						</c:forEach>
+                        <option>toto</option>
+                        <option>tata</option>
+                    </select>
                     <input name="groupe" type="text" value="<c:out value="${groupe}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />

@@ -195,6 +195,23 @@ input[type="text"], input[type="password"], .main li, .label p {
 	-webkit-appearance:none;
 }
 
+select {
+	text-align:left;
+	position: relative;
+	width:99%;
+	padding:3%;
+	background:#f5f3e6;
+	margin-bottom: 6%;
+	color: #665d51;
+	font-weight:600;
+	font-size: 16px;
+	outline: none;
+	border: none;
+	border-radius: 5px;
+	border:2px solid #665d51;
+	-webkit-appearance:none;
+}
+
 .main li a {
 	color:#665d51 ;
 }
