@@ -29,3 +29,31 @@ $( "#loginForm" ).validate({
     	}
   	}
 });
+
+$( "#editForm" ).validate({
+	errorElement: 'div',
+  	rules: {
+    	firstName: {
+      		required: true
+    	},
+    	lastName: {
+      		required: true
+    	},
+    	mail: {
+    		required: true,
+    		email: true
+    	},
+    	website: {
+    		url: true
+    	},
+    	birthDate: {
+    		required: true
+    	},
+    	password: {
+    		required: true
+    	},
+    	groupe: {
+    		required: true
+    	}
+  	}
+});

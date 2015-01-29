@@ -7,7 +7,10 @@
     <head>      
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
         <title>Création</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="jquery.validate.js"></script>
+		<script type="text/javascript" src="messages_fr.js"></script>
     </head>
     <body>
         <jsp:include page="menu.jsp" />
@@ -30,26 +33,27 @@
 				  	<c:set var="groupe" value="${person.groupe}"/>
 				</c:if>
                 
-                <form action="/Annuaire/save.htm" method="post">
+                <form id="editForm" action="/Annuaire/save.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Prénom</h2>
-                    <input name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
+                    <input name="firstName" type="text" value="<c:out value="${firstName}"/>" />
                     <h2>Nom</h2>
-                    <input name="lastName" type="text" class="text" value="<c:out value="${lastName}"/>" />
+                    <input name="lastName" type="text" value="<c:out value="${lastName}"/>" />
                     <h2>Mail</h2>
-                    <input name="mail" type="text" class="text" value="<c:out value="${mail}"/>" />
+                    <input name="mail" type="text" value="<c:out value="${mail}"/>" />
                     <h2>Site web</h2>
-                    <input name="website" type="text" class="text" value="<c:out value="${website}"/>" />
+                    <input name="website" type="text" value="<c:out value="${website}"/>" />
                     <h2>Date de naissance</h2>
-                    <input name="birthDate" type="text" class="text" value="<c:out value="${birthDate}"/>" />
+                    <input name="birthDate" type="text" value="<c:out value="${birthDate}"/>" />
                     <h2>Mot de passe</h2>
                     <input name="password" type="password" value="<c:out value="${password}"/>" />
                     <h2>Groupe</h2>
-                    <input name="groupe" type="text" class="text" value="<c:out value="${groupe}"/>" />
+                    <input name="groupe" type="text" value="<c:out value="${groupe}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>
                 </form>
+                <script type="text/javascript" src="script.js"></script>
             </div>
         </div>
     </body>
