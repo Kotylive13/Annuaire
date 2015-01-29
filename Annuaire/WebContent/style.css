@@ -111,11 +111,27 @@ img:hover{
    	margin-right: auto;
    	left: 0;
    	right: 0;
-   	width: 250px;
-   	height: 50px;
-   	background-color: #f5f3e6;
-   	border: 1px solid black;
-   	top
+   	width: 300px;
+	text-align: center;
+	top:50px;
+}
+
+.popup p[class="success"] {
+	border:2px solid #00722d;
+	border-radius: 5px;
+	background-color: #bedb89;
+	color:#00722d;
+	height:40px;
+  	line-height:40px;
+}
+
+.popup p[class="error"] {
+	border:2px solid #9A1B16;
+	border-radius: 5px;
+	background-color: #FF8181;
+	color:#9A1B16;
+	height:40px;
+  	line-height:40px;
 }
 
 .main {
