@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import springapp.groupe.Groupe;
 import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
@@ -24,36 +25,36 @@ public class AnnuaireController {
 	@Autowired
     IGroupeManager groupeManager;
 	
-    @RequestMapping(value = "/annuaire")
-    public ModelAndView annuaire() {
-        return new ModelAndView("annuaire", "persons", personManager.findAll());
+    @RequestMapping(value = "/annuaire_persons")
+    public ModelAndView annuaire_persons() {
+        return new ModelAndView("annuaire_persons", "persons", personManager.findAll());
     }
     
-    @RequestMapping(value = "/create")
-    public ModelAndView create() {
-        return new ModelAndView("edit");
+    @RequestMapping(value = "/create_person")
+    public ModelAndView create_persons() {
+        return new ModelAndView("edit_person");
     }
     
-    @RequestMapping(value = "/detail")
-    public ModelAndView detail(@RequestParam(required = true) String id) {
-        return new ModelAndView("detail", "person", personManager.find(id));
+    @RequestMapping(value = "/detail_person")
+    public ModelAndView detail_persons(@RequestParam(required = true) String id) {
+        return new ModelAndView("detail_person", "person", personManager.find(id));
     }
     
-    @RequestMapping(value = "/edit")
-    public ModelAndView edit(@RequestParam(required = true) String id) {
-        return new ModelAndView("edit", "person", personManager.find(id));
+    @RequestMapping(value = "/edit_person")
+    public ModelAndView edit_persons(@RequestParam(required = true) String id) {
+        return new ModelAndView("edit_person", "person", personManager.find(id));
     }
     
-    @RequestMapping(value = "/delete")
-    public ModelAndView delete(@RequestParam(required = true) String id) {
+    @RequestMapping(value = "/delete_person")
+    public ModelAndView delete_persons(@RequestParam(required = true) String id) {
     	personManager.delete(id);
-    	return new ModelAndView("annuaire", "persons", personManager.findAll());
+    	return new ModelAndView("annuaire_persons", "persons", personManager.findAll());
     }
     
     private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     
-    @RequestMapping(value = "/save")
-    public ModelAndView save(
+    @RequestMapping(value = "/save_person")
+    public ModelAndView save_persons(
     		@RequestParam(required = true) String id,
     		@RequestParam(required = true) String firstName,
     		@RequestParam(required = true) String lastName,
@@ -61,8 +62,8 @@ public class AnnuaireController {
     		@RequestParam(required = true) String website,
     		@RequestParam(required = true) String birthDate,
     		@RequestParam(required = true) String password,
-    		@RequestParam(required = true) String groupe,
-    		HttpSession session) throws ParseException {
+    		@RequestParam(required = true) String groupe
+    		) throws ParseException {
     	
     	Person p;
     	
@@ -79,7 +80,51 @@ public class AnnuaireController {
     	p.setGroupe(groupeManager.find(groupe));
     	
         personManager.save(p);
-        return new ModelAndView("edit");
+        return new ModelAndView("edit_person");
+    }
+	
+    @RequestMapping(value = "/annuaire_groupes")
+    public ModelAndView annuaire_groupes() {
+        return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
+    }
+    
+    @RequestMapping(value = "/create_groupe")
+    public ModelAndView create_groupe() {
+        return new ModelAndView("edit_groupe");
+    }
+    
+    @RequestMapping(value = "/detail_groupe")
+    public ModelAndView detail_groupe(@RequestParam(required = true) String id) {
+        return new ModelAndView("detail_groupe", "groupe", groupeManager.find(id));
+    }
+    
+    @RequestMapping(value = "/edit_groupe")
+    public ModelAndView edit_groupe(@RequestParam(required = true) String id) {
+        return new ModelAndView("edit_groupe", "groupe", groupeManager.find(id));
+    }
+    
+    @RequestMapping(value = "/delete_groupe")
+    public ModelAndView delete_groupe(@RequestParam(required = true) String id) {
+    	groupeManager.delete(id);
+    	return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
+    }
+    
+    @RequestMapping(value = "/save_groupe")
+    public ModelAndView save_groupe(
+    		@RequestParam(required = true) String id,
+    		@RequestParam(required = true) String name
+    		) throws ParseException {
+    	
+    	Groupe g;
+    	
+    	if(id == "")
+    		g = new Groupe();
+    	else g = groupeManager.find(id);
+    	
+    	g.setName(name);
+    	
+        groupeManager.save(g);
+        return new ModelAndView("edit_groupe");
     }
     
     @RequestMapping(value = "/connection")
@@ -97,12 +142,12 @@ public class AnnuaireController {
     	   personManager.find(login).getPassword().equals(password))
     		session.setAttribute("user", login);
     	
-        return "redirect:annuaire.htm";
+        return "redirect:annuaire_persons.htm";
     }
     
     @RequestMapping(value = "/logout")
     public String logout(HttpSession session) {    	
     	session.invalidate();    	
-        return "redirect:annuaire.htm";
+        return "redirect:annuaire_persons.htm";
     }
 }

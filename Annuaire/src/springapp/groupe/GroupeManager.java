@@ -32,7 +32,7 @@ public class GroupeManager implements IGroupeManager {
 	}
 
 	@Override
-	public Groupe find(String id) {		 
+	public Groupe find(String id) {
 		return em.find(Groupe.class, id);
 	}
 

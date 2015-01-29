@@ -1,2 +1,2 @@
 <%@ include file="/WEB-INF/jsp/include.jsp" %>
-<c:redirect url="/annuaire.htm"/>
+<c:redirect url="/annuaire_persons.htm"/>

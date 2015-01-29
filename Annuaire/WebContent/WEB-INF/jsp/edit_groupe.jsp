@@ -22,21 +22,15 @@
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
                 
-                <c:if test="${not empty person}">
-                	<c:set var="id" value="${person.id}"/>
-				  	<c:set var="firstName" value="${person.firstName}"/>
-				  	<c:set var="lastName" value="${person.lastName}"/>
-				  	<c:set var="mail" value="${person.mail}"/>
-				  	<c:set var="website" value="${person.website}"/>
-				  	<fmt:formatDate var="birthDate" pattern="dd/MM/yyyy" value="${person.birthDate}"/>
-				  	<c:set var="password" value="${person.password}"/>
-				  	<c:set var="groupe" value="${person.groupe}"/>
+                <c:if test="${not empty groupe}">
+                	<c:set var="id" value="${groupe.id}"/>
+				  	<c:set var="name" value="${groupe.name}"/>
 				</c:if>
                 
-                <form id="editForm" action="/Annuaire/save.htm" method="post">
+                <form id="editForm" action="/Annuaire/save_groupe.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Nom du groupe</h2>
-                    <input name="groupName" type="text" value="<c:out value="${groupName}"/>" />
+                    <input name="name" type="text" value="<c:out value="${name}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>

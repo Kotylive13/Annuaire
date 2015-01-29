@@ -6,7 +6,7 @@
 <html lang="en" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
     	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-        <title>Annuaire de groupe</title>
+        <title>Annuaire</title>
         <link href="style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
@@ -14,14 +14,13 @@
         
     	<div class="main">
     		<div class="column">
-				<h1>Annuaire de groupe</h1>
+				<h1>Annuaire</h1>
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
-				</div> 
-				<h2>NOM DU GROUPE</h2>       
+				</div>        
 				<ul>
-					<c:forEach var="groupe" items="${groupes}">
-					<li><a href="/Annuaire/detail_groupe.htm?id=<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></a></li>
+					<c:forEach var="person" items="${persons}">
+					<li><a href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out value="${person.firstName}"/> <c:out value="${person.lastName}"/></a></li>
 					</c:forEach>
 		        </ul>
 		    </div>
