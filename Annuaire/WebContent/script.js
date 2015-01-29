@@ -39,7 +39,20 @@ $( "#editForm" ).validate({
     	lastName: {
       		required: true
     	},
+    	email: {
+    		required: true,
+    		email: true
+    	},
+    	website: {
+    		url: true
+    	},
     	birthDate: {
+    		required: true
+    	},
+    	password: {
+    		required: true
+    	},
+    	groupe: {
     		required: true
     	}
   	}

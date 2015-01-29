@@ -36,7 +36,7 @@
                 <form id="editForm" action="/Annuaire/save.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Prénom</h2>
-                    <input id="firstName" name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
+                    <input name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
                     <h2>Nom</h2>
                     <input name="lastName" type="text" class="text" value="<c:out value="${lastName}"/>" />
                     <h2>Mail</h2>
