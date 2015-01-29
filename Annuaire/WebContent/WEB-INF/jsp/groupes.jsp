@@ -20,8 +20,8 @@
 				</div> 
 				<h2>NOM DU GROUPE</h2>       
 				<ul>
-					<c:forEach var="person" items="${persons}">
-					<li><a href="/Annuaire/detail.htm?id=<c:out value="${person.id}"/>"><c:out value="${person.firstName}"/> <c:out value="${person.lastName}"/></a></li>
+					<c:forEach var="groupe" items="${groupes}">
+					<li><a href="/Annuaire/detail_groupe.htm?id=<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></a></li>
 					</c:forEach>
 		        </ul>
 		    </div>
