@@ -1,4 +1,4 @@
-package springapp.persons;
+package springapp.groupe;
 
 import java.util.Collection;
 
@@ -12,12 +12,12 @@ import javax.persistence.PersistenceContext;
 @Stateless
 @LocalBean()
 @Startup
-public class PersonManager implements IPersonManager {
+public class GroupeManager implements IGroupeManager {
 
 	@PersistenceContext(unitName = "myData")
 	EntityManager em;
 
-	public PersonManager() {
+	public GroupeManager() {
 	}
 
 	@PostConstruct
@@ -26,25 +26,24 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
-	public Collection<Person> findAll() {
-		return em.createQuery("Select p from Person p", Person.class)
+	public Collection<Groupe> findAll() {
+		return em.createQuery("Select g from Groupe g", Groupe.class)
 				.getResultList();
 	}
 
 	@Override
-	public Person find(String id) {		 
-		return em.find(Person.class, id);
+	public Groupe find(String id) {		 
+		return em.find(Groupe.class, id);
 	}
 
 	@Override
-	public void save(Person p) {
+	public void save(Groupe p) {
 		em.merge(p);
 	}
 
 	@Override
 	public int delete(String id) {
-		return em.createQuery("delete from Person p where p.id = :id")
+		return em.createQuery("delete from Groupe g where g.id = :id")
 				.setParameter("id", id).executeUpdate();
 	}
-
 }

@@ -11,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
 
 @Controller()
 public class AnnuaireController {
-    
+
 	@Autowired
     IPersonManager personManager;
+	
+	@Autowired
+    IGroupeManager groupeManager;
 	
     @RequestMapping(value = "/annuaire")
     public ModelAndView annuaire() {
@@ -38,6 +42,12 @@ public class AnnuaireController {
     @RequestMapping(value = "/edit")
     public ModelAndView edit(@RequestParam(required = true) String id) {
         return new ModelAndView("edit", "person", personManager.find(id));
+    }
+    
+    @RequestMapping(value = "/delete")
+    public ModelAndView delete(@RequestParam(required = true) String id) {
+    	personManager.delete(id);
+    	return new ModelAndView("annuaire", "persons", personManager.findAll());
     }
     
     private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -66,7 +76,7 @@ public class AnnuaireController {
     	p.setWebsite(website == "" ? null : website);
     	p.setBirthDate(formatter.parse(birthDate));
     	p.setPassword(password);
-    	p.setGroupe(groupe);
+    	p.setGroupe(groupeManager.find(groupe));
     	
         personManager.save(p);
         return new ModelAndView("edit");

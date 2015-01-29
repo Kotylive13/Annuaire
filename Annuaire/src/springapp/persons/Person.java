@@ -6,7 +6,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import springapp.groupe.Groupe;
 
 @Entity
 @Table(name = "PERSON")
@@ -34,8 +38,9 @@ public class Person {
 	@Column
 	private String password;
 	
-	@Column
-	private String groupe;
+	@ManyToOne
+	@JoinColumn(name="ID_GROUPE")
+	private Groupe groupe;
 
 	public Person() {
 	}
@@ -96,11 +101,11 @@ public class Person {
 		this.password = password;
 	}
 
-	public String getGroupe() {
+	public Groupe getGroupe() {
 		return groupe;
 	}
 
-	public void setGroupe(String groupe) {
+	public void setGroupe(Groupe groupe) {
 		this.groupe = groupe;
 	}
 }

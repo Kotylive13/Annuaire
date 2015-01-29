@@ -23,4 +23,6 @@
 
 	<jee:jndi-lookup id="personManager"
 		jndi-name="java:global/Annuaire/PersonManager" />
+	<jee:jndi-lookup id="groupeManager"
+		jndi-name="java:global/Annuaire/GroupeManager" />
 </beans>

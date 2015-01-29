@@ -25,8 +25,24 @@
 					<div class="label"><p><c:out value="${person.lastName}"/></p></div>
 					<h2>Site web</h2>	
 					<div class="label"><p><c:out value="${person.website}"/></p></div>
-					<button name="editButton" class="modifButton" >Editer</button>
-					<button name="removeButton" class="supprButton">Supprimer</button>
+					
+					<c:choose>
+				  	  <c:when test="${sessionScope.user == 'admin'}">
+				  	  	<a href="/Annuaire/edit.htm?id=<c:out value="${person.id}"/>" >
+				  	  		<button class="editButton">Editer</button>
+				  	  	</a>
+				  	  	<a href="/Annuaire/delete.htm?id=<c:out value="${person.id}"/>" >
+				  	  		<button class="removeButton">Supprimer</button>
+				  	  	</a>
+				  	  </c:when>
+				  	  <c:when test="${sessionScope.user == person.id}">
+				  	  	<a href="/Annuaire/edit.htm?id=<c:out value="${person.id}"/>" >
+				  	  		<button class="editButton">Editer</button>
+				  	  	</a>
+				  	  </c:when>
+				  	  <c:otherwise>
+				  	  </c:otherwise>
+					</c:choose>
 				</div>
 		    </div>
 		</div>
