@@ -7,7 +7,10 @@
     <head>      
         <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
         <title>Création</title>
-        <link href="style.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" rel="stylesheet" href="style.css" />
+        <script type="text/javascript" src="jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="jquery.validate.js"></script>
+		<script type="text/javascript" src="messages_fr.js"></script>
     </head>
     <body>
         <jsp:include page="menu.jsp" />
@@ -30,10 +33,10 @@
 				  	<c:set var="groupe" value="${person.groupe}"/>
 				</c:if>
                 
-                <form action="/Annuaire/save.htm" method="post">
+                <form id="editForm" action="/Annuaire/save.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Prénom</h2>
-                    <input name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
+                    <input id="firstName" name="firstName" type="text" class="text" value="<c:out value="${firstName}"/>" />
                     <h2>Nom</h2>
                     <input name="lastName" type="text" class="text" value="<c:out value="${lastName}"/>" />
                     <h2>Mail</h2>
@@ -50,6 +53,7 @@
                         <input type="submit" value="Valider" />
                     </div>
                 </form>
+                <script type="text/javascript" src="script.js"></script>
             </div>
         </div>
     </body>

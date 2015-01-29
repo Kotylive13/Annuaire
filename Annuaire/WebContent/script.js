@@ -26,6 +26,12 @@ $( "#loginForm" ).validate({
     	},
     	password: {
       		required: true
+    	},
+    	firstName: {
+      		required: true
+    	},
+    	lastName: {
+      		required: true
     	}
   	}
 });
