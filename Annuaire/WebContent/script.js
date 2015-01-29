@@ -26,7 +26,13 @@ $( "#loginForm" ).validate({
     	},
     	password: {
       		required: true
-    	},
+    	}
+  	}
+});
+
+$( "#editForm" ).validate({
+	errorElement: 'div',
+  	rules: {
     	firstName: {
       		required: true
     	},
