@@ -10,5 +10,4 @@
                 value="buildSchema(ForeignKeys=true)"/>
         </properties>
     </persistence-unit> 
-
 </persistence>

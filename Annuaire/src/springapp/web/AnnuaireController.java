@@ -23,7 +23,7 @@ import springapp.groupe.Groupe;
 import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
-import springapp.util.RegexPerson;
+import springapp.util.RegexFactory;
 
 @Controller()
 public class AnnuaireController {
@@ -76,7 +76,7 @@ public class AnnuaireController {
 			@RequestParam(required = true) String groupe) throws ParseException {
 
 		Person p;
-		RegexPerson regex = new RegexPerson();
+		RegexFactory regex = new RegexFactory();
 
 		if (id == "")
 			p = new Person();
