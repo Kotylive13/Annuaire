@@ -52,7 +52,7 @@
                     <h2>Groupe</h2>
                     <select name="groupe">
                     	<c:forEach var="groupe" items="${groupes}">
-							<option><c:out value="${groupe.name}"/>"></option>
+							<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
 						</c:forEach>
                     </select>
                     <div class="submit">
