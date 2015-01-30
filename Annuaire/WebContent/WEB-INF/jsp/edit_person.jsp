@@ -58,8 +58,8 @@
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>
+                    <script type="text/javascript" src="script.js"></script>
                 </form>
-                <script type="text/javascript" src="script.js"></script>
             </div>
         </div>
     </body>

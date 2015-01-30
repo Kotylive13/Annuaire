@@ -71,3 +71,13 @@ $( "#editGroupe" ).validate({
       }
     }
 });
+
+$( "#loginForgotForm" ).validate({
+	  errorElement: 'div',
+	    rules: {
+	      email: {
+	        required: true,
+	        email: true
+	      }
+	    }
+	});

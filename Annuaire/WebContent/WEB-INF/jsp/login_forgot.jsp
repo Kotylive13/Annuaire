@@ -21,7 +21,7 @@
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
 				<form id="loginForgotForm" method="post" action="/Annuaire/generate_login.htm">
-					<input id="login" name="login" type="text" value="ADRESSE E-MAIL" onfocus="this.value = '';"/>
+					<input id="email" name="email" type="text" value="ADRESSE E-MAIL" onfocus="this.value = '';"/>
 					<div class="submit">
 						<input type="submit" value="Envoyer" />
 					</div>	
