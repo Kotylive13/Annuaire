@@ -28,15 +28,15 @@
 					
 					<c:choose>
 				  	  <c:when test="${sessionScope.user == 'admin'}">
-				  	  	<a href="/Annuaire/edit.htm?id=<c:out value="${person.id}"/>" >
+				  	  	<a href="/Annuaire/edit_person.htm?id=<c:out value="${person.id}"/>" >
 				  	  		<button class="editButton">Editer</button>
 				  	  	</a>
-				  	  	<a href="/Annuaire/delete.htm?id=<c:out value="${person.id}"/>" >
+				  	  	<a href="/Annuaire/delete_person.htm?id=<c:out value="${person.id}"/>" >
 				  	  		<button class="removeButton">Supprimer</button>
 				  	  	</a>
 				  	  </c:when>
 				  	  <c:when test="${sessionScope.user == person.id}">
-				  	  	<a href="/Annuaire/edit.htm?id=<c:out value="${person.id}"/>" >
+				  	  	<a href="/Annuaire/edit_person.htm?id=<c:out value="${person.id}"/>" >
 				  	  		<button class="editButton">Editer</button>
 				  	  	</a>
 				  	  </c:when>

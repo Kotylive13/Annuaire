@@ -88,22 +88,22 @@ public class AnnuaireController {
 		else
 			p = personManager.find(id);
 
-		if (regex.isCorrectName(firstName)) {
+		if (regex.isCorrectName(firstName) && !firstName.isEmpty()) {
 			p.setFirstName(firstName);
 		}
-		if (regex.isCorrectName(lastName)) {
+		if (regex.isCorrectName(lastName) && !lastName.isEmpty()) {
 			p.setLastName(lastName);
 		}
-		if (regex.isCorrectEmail(mail)) {
+		if (regex.isCorrectEmail(mail) && !mail.isEmpty()) {
 			p.setMail(mail);
 		}
-		if (regex.isCorrectWebsite(website)) {
+		if (regex.isCorrectWebsite(website) && !mail.isEmpty() ) {
 			p.setWebsite(website == "" ? null : website);
 		}
-		if (regex.isCorrectDate(birthDate)) {
+		if (regex.isCorrectDate(birthDate) && !birthDate.isEmpty()) {
 			p.setBirthDate(formatter.parse(birthDate));
 		}
-		if (regex.isCorrectPassword(password)) {
+		if (regex.isCorrectPassword(password) && !birthDate.isEmpty()) {
 			p.setPassword(password);
 		}
 		p.setGroupe(groupeManager.find(groupe));
