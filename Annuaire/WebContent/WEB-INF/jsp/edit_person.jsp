@@ -17,7 +17,14 @@
         
         <div class="main">
             <div class="column">
-                <h1>Ajout personne</h1>
+            	<c:choose>
+	            	<c:when test="${not empty person}">
+	                	<h1>Modifier personne</h1>
+	                </c:when>
+	                <c:otherwise>
+	                	<h1>Ajouter personne</h1>
+	                </c:otherwise>
+                </c:choose>
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>

@@ -59,7 +59,7 @@ public class AnnuaireController {
     	model.put("person", personManager.find(id));
     	model.put("groupes", groupeManager.findAll());
     	
-        return new ModelAndView("edit_person");
+        return new ModelAndView("edit_person", "person", personManager.find(id));
     }
     
     @RequestMapping(value = "/delete_person")
