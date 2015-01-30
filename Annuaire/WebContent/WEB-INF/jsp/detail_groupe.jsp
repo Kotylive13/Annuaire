@@ -18,9 +18,6 @@
 			<div class="head">
 				<a href="/Annuaire/"><img src="user.png" alt="Accueil" /></a>
 			</div>
-			<c:when test="${groupe.persons == null}">
-				<p>je te chie dessus</p>
-			</c:when>
 			<ul>
 
 				<c:forEach var="person" items="${groupe.persons}">
