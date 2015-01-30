@@ -30,7 +30,7 @@ $( "#loginForm" ).validate({
     }
 });
 
-$( "#editForm" ).validate({
+$( "#editPerson" ).validate({
   errorElement: 'div',
     rules: {
       firstName: {
@@ -58,6 +58,15 @@ $( "#editForm" ).validate({
         equalTo: "#password"
       },
       groupe: {
+        required: true
+      }
+    }
+});
+
+$( "#editGroupe" ).validate({
+  errorElement: 'div',
+    rules: {
+      groupeName: {
         required: true
       }
     }
