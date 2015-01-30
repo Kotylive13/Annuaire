@@ -17,12 +17,12 @@
         <div class="main">
             <div class="column">
             	<c:choose>
-	            	<c:when test="${not empty person}">
-	                	<h1>Modifier personne</h1>
-	                </c:when>
-	                <c:otherwise>
-	                	<h1>Ajouter personne</h1>
-	                </c:otherwise>
+            	<c:when test="${not empty person}">
+                	<h1>Modifier personne</h1>
+                </c:when>
+                <c:otherwise>
+                	<h1>Ajouter personne</h1>
+                </c:otherwise>
                 </c:choose>
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
@@ -36,7 +36,6 @@
 				  	<c:set var="website" value="${person.website}"/>
 				  	<fmt:formatDate var="birthDate" pattern="dd/MM/yyyy" value="${person.birthDate}"/>
 				  	<c:set var="password" value="${person.password}"/>
-				  	<c:set var="groupe" value="${person.groupe}"/>
 				</c:if>
                 
                 <form id="editPerson" action="/Annuaire/save_person.htm" method="post">
@@ -57,9 +56,25 @@
                     <input name="passwordConfirm" type="password" />
                     <h2>Groupe</h2>
                     <select name="groupe">
+                    	<c:choose>
+                    	<c:when test="${not empty person}">
+                    	
+						<option>test</option>
                     	<c:forEach var="groupe" items="${groupes}">
+                    			<option>test</option>
+								<c:if test="${person.groupe.id eq groupe.id}">
+								<option  value="<c:out value="${groupe.id}"/>" selected="selected" ><c:out value="${groupe.name}"/></option>
+								</c:if>
+								<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
+							</c:forEach>
+
+						</c:when>
+						<c:otherwise>
+						<c:forEach var="groupe" items="${groupes}">
 							<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
 						</c:forEach>
+						</c:otherwise>
+						</c:choose>
                     </select>
                     <div class="submit">
                         <input type="submit" value="Valider" />
