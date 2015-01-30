@@ -9,7 +9,7 @@ public interface IPersonManager {
 
 	// lire une personne
 	Person find(String id);
-
+	
 	// modification ou ajout d'une nouvelle personne
 	Person save(Person p);
 	

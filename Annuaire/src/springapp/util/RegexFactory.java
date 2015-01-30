@@ -26,7 +26,7 @@ public class RegexFactory {
 	}
 	
 	public boolean isCorrectPassword(String password) {
-		expression = "(?=.*[a-z])(?=.*d)(?=.*[@#$%])(?=.*[A-Z]).{6,16}";
+		expression = "(?=.*[a-z])*(?=.*d)*(?=.*[@#$%])*(?=.*[A-Z])*.{6,16}";
 		return password.matches(expression);
 	}
 }

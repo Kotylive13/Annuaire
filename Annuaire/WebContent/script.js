@@ -75,7 +75,10 @@ $( "#editGroupe" ).validate({
 $( "#loginForgotForm" ).validate({
 	  errorElement: 'div',
 	    rules: {
-	      email: {
+	      login: {
+		    required: true
+		  },
+	      mail: {
 	        required: true,
 	        email: true
 	      }

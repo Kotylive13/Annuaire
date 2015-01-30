@@ -25,8 +25,8 @@ import springapp.groupe.Groupe;
 import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
+import springapp.util.Generate;
 import springapp.util.RegexFactory;
-
 import springapp.util.Email;
 
 @Controller()
@@ -79,8 +79,6 @@ public class AnnuaireController {
 			@RequestParam(required = true) String birthDate,
 			@RequestParam(required = true) String password,
 			@RequestParam(required = true) String groupe) throws ParseException {
-
-    	System.out.println("----------------PASSWORD " + password);
     	
 		Person p;
 		RegexFactory regex = new RegexFactory();
@@ -108,7 +106,6 @@ public class AnnuaireController {
 		if (regex.isCorrectPassword(password) && !password.isEmpty()) {
 			p.setPassword(password);
 		}
-		
 		
 		p.setGroupe(groupeManager.find(groupe));
 		
@@ -197,10 +194,31 @@ public class AnnuaireController {
 	}
 
 	@RequestMapping(value = "/generate_login")
-	public ModelAndView generate_login() {
+	public ModelAndView generate_login(
+			@RequestParam(required = true) String login,
+    		@RequestParam(required = true) String mail
+			) throws ParseException {
 
-		Email email = new Email();
-		email.send("philippe.mothais@gmail.com", "Test", "Ca marche !!");
+		Person p = personManager.find(login);
+		
+		if (mail.equals(p.getMail())) {
+			
+			Generate generate = new Generate();
+			p.setPassword(generate.generatePassword());
+			
+			p = personManager.save(p);
+			
+			String message;
+			message = "Bonjour, voici vos nouveaux identifiants : \n\n" +
+					  "login : " + p.getId() + "\n" +
+					  "mot de passe : " + p.getPassword() + "\n\n" +
+					  "Ce mot de passe a été généré automatiquement, " +
+					  "nous vous conseillons de le modifier.\n\n" +
+					  "Cordialement.";
+			
+			Email email = new Email();
+			email.send("philippe.mothais@gmail.com", "Changement mot de passe", message);
+		}
 		
 		return new ModelAndView("connection");
 	}
