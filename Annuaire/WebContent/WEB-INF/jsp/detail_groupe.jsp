@@ -18,20 +18,28 @@
 			<div class="head">
 				<a href="/Annuaire/"><img src="user.png" alt="Accueil" /></a>
 			</div>
+			<c:when test="${groupe.persons == null}">
+				<p>je te chie dessus</p>
+			</c:when>
 			<ul>
+
 				<c:forEach var="person" items="${groupe.persons}">
 					<li><a
-						href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out
-								value="${person.firstName}" /> <c:out value="${person.lastName}" /></a></li>
+						href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>">
+							<c:out value="${person.firstName}" />
+							<c:out value="${person.lastName}" />
+					</a></li>
 				</c:forEach>
 			</ul>
 
 			<div class="list">
 				<c:if test="${sessionScope.user == 'admin'}">
-					<a href="/Annuaire/edit_groupe.htm?id=<c:out value="${groupe.id}"/>">
+					<a
+						href="/Annuaire/edit_groupe.htm?id=<c:out value="${groupe.id}"/>">
 						<button class="editButton">Editer</button>
 					</a>
-					<a href="/Annuaire/delete_groupe.htm?id=<c:out value="${groupe.id}"/>">
+					<a
+						href="/Annuaire/delete_groupe.htm?id=<c:out value="${groupe.id}"/>">
 						<button class="removeButton">Supprimer</button>
 					</a>
 				</c:if>
