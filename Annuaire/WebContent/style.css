@@ -158,6 +158,14 @@ img:hover{
 	text-align: left;
 }
 
+.main h2[class="center"] {
+	font-size:20px;
+	color:#665d51;
+	font-weight:400;
+	padding:3%;
+	text-align: center;
+}
+
 .main form, .main ul, .list {
 	width: 80%;
 	margin: 0 auto;
