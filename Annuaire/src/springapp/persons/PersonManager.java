@@ -37,8 +37,8 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
-	public void save(Person p) {
-		em.merge(p);
+	public Person save(Person p) {
+		return em.merge(p);
 	}
 
 	@Override

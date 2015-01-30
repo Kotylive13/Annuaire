@@ -80,10 +80,12 @@ public class AnnuaireController {
 			@RequestParam(required = true) String password,
 			@RequestParam(required = true) String groupe) throws ParseException {
 
+    	System.out.println("----------------PASSWORD " + password);
+    	
 		Person p;
 		RegexFactory regex = new RegexFactory();
 
-		/*if (id == "")
+		if (id == "")
 			p = new Person();
 		else
 			p = personManager.find(id);
@@ -97,36 +99,28 @@ public class AnnuaireController {
 		if (regex.isCorrectEmail(mail) && !mail.isEmpty()) {
 			p.setMail(mail);
 		}
-		if (regex.isCorrectWebsite(website) && !mail.isEmpty() ) {
+		if (regex.isCorrectWebsite(website) && !website.isEmpty() ) {
 			p.setWebsite(website == "" ? null : website);
 		}
 		if (regex.isCorrectDate(birthDate) && !birthDate.isEmpty()) {
 			p.setBirthDate(formatter.parse(birthDate));
 		}
-		if (regex.isCorrectPassword(password) && !birthDate.isEmpty()) {
+		if (regex.isCorrectPassword(password) && !password.isEmpty()) {
 			p.setPassword(password);
-		}*/
+		}
 		
-		if (id == "")
-			p = new Person();
-		else
-			p = personManager.find(id);
-
-		p.setFirstName(firstName);
-		p.setLastName(lastName);
-		p.setMail(mail);
-		p.setWebsite(website == "" ? null : website);
-		p.setBirthDate(formatter.parse(birthDate));
-		p.setPassword(password);
 		
 		p.setGroupe(groupeManager.find(groupe));
-
-		System.out.println("----------------personID " + id + " " + password);
 		
-		personManager.save(p);
+		p = personManager.save(p);
 		
 		Email email = new Email();
-		email.send(p.getMail(), "Coucou", p.getId()+p.getPassword());
+		String message;
+		message = "Bonjour, voici vos identifiants : \n\n" +
+				  "login : " + p.getId() + "\n" +
+				  "mot de passe : " + p.getPassword() + "\n\n" +
+				  "Cordialement.";
+		email.send(p.getMail(), "Identifiants annuaire", message);
 		
 		return new ModelAndView("edit_person");
 	}
@@ -171,7 +165,7 @@ public class AnnuaireController {
     	
     	g.setName(name);
     	
-        groupeManager.save(g);
+        g = groupeManager.save(g);
         return new ModelAndView("edit_groupe");
     }
     

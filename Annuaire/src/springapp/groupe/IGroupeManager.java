@@ -11,7 +11,7 @@ public interface IGroupeManager {
 	Groupe find(String id);
 
 	// modification ou ajout d'une nouvelle personne
-	void save(Groupe g);
+	Groupe save(Groupe g);
 	
 	// suppresion d'une personne
 	int delete(String id);

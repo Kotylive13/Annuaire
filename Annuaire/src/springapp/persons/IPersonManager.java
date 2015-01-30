@@ -11,7 +11,7 @@ public interface IPersonManager {
 	Person find(String id);
 
 	// modification ou ajout d'une nouvelle personne
-	void save(Person p);
+	Person save(Person p);
 	
 	// suppresion d'une personne
 	int delete(String id);

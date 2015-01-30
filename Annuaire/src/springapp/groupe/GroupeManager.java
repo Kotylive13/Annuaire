@@ -41,8 +41,8 @@ public class GroupeManager implements IGroupeManager {
 	}
 
 	@Override
-	public void save(Groupe p) {
-		em.merge(p);
+	public Groupe save(Groupe g) {
+		return em.merge(g);
 	}
 
 	@Override

@@ -14,19 +14,16 @@
     </head>
     <body>
         <jsp:include page="menu.jsp" />
-        
         <div class="main">
             <div class="column">
                 <h1>Edition d'un groupe</h1>
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
-                
                 <c:if test="${not empty groupe}">
                 	<c:set var="id" value="${groupe.id}"/>
 				  	<c:set var="name" value="${groupe.name}"/>
 				</c:if>
-                
                 <form id="editGroupe" action="/Annuaire/save_groupe.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Nom du groupe</h2>
