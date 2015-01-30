@@ -26,7 +26,6 @@ img{max-width:100%;}
 body{
 	background:#665d51;
  	font-family: 'Open Sans', sans-serif;
-
 }
 
 .column {
@@ -80,7 +79,12 @@ li.right_button {
 .head {
 	position: absolute;
 	top:-70px;
-	left: 33%;
+   	margin-left: auto;
+   	margin-right: auto;
+   	left: 0;
+   	right: 0;
+   	width: 300px;
+	text-align: center;
 }
 
 .head img {
