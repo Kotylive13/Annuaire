@@ -33,7 +33,7 @@
 				  	<c:set var="groupe" value="${person.groupe}"/>
 				</c:if>
                 
-                <form id="editForm" action="/Annuaire/save_person.htm" method="post">
+                <form id="editPerson" action="/Annuaire/save_person.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Prénom</h2>
                     <input name="firstName" type="text" value="<c:out value="${firstName}"/>" />
@@ -58,8 +58,8 @@
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>
+                    <script type="text/javascript" src="script.js"></script>
                 </form>
-                <script type="text/javascript" src="script.js"></script>
             </div>
         </div>
     </body>

@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
-	<title>Identification</title>
+	<title>Mot de passe oublié</title>
 	<link type="text/css" rel="stylesheet" href="style.css" />
 	<script type="text/javascript" src="jquery-1.11.1.js"></script>
 	<script type="text/javascript" src="jquery.validate.js"></script>
@@ -17,19 +17,17 @@
 		<jsp:include page="menu.jsp" />
 		<div class="main">
 			<div class="column">
-				<h1>Bienvenue</h1>
+				<h1>Mot de passe oublié</h1>
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
-				<form id="loginForm" method="post" action="/Annuaire/login.htm">
-					<input id="login" name="login" type="text" value="LOGIN" onfocus="this.value = '';"/>
-					<input id="password" name="password" type="password" value="******" onfocus="this.value = '';"/>
+				<form id="loginForgotForm" method="post" action="/Annuaire/generate_login.htm">
+					<input id="email" name="email" type="text" value="ADRESSE E-MAIL" onfocus="this.value = '';"/>
 					<div class="submit">
-						<input type="submit" value="Connexion" />
+						<input type="submit" value="Envoyer" />
 					</div>	
-					<script type="text/javascript" src="script.js"></script>
 				</form>
-				<p class="bottom"><a href="/Annuaire/login_forgot.htm">Mot de passe oublié ?</a></p>
+				<script type="text/javascript" src="script.js"></script>
 			</div>
 		</div>
 	</body>

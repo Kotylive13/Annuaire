@@ -30,7 +30,7 @@ $( "#loginForm" ).validate({
     }
 });
 
-$( "#editForm" ).validate({
+$( "#editPerson" ).validate({
   errorElement: 'div',
     rules: {
       firstName: {
@@ -62,3 +62,22 @@ $( "#editForm" ).validate({
       }
     }
 });
+
+$( "#editGroupe" ).validate({
+  errorElement: 'div',
+    rules: {
+      name: {
+        required: true
+      }
+    }
+});
+
+$( "#loginForgotForm" ).validate({
+	  errorElement: 'div',
+	    rules: {
+	      email: {
+	        required: true,
+	        email: true
+	      }
+	    }
+	});

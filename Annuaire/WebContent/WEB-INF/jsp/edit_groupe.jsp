@@ -27,15 +27,15 @@
 				  	<c:set var="name" value="${groupe.name}"/>
 				</c:if>
                 
-                <form id="editForm" action="/Annuaire/save_groupe.htm" method="post">
+                <form id="editGroupe" action="/Annuaire/save_groupe.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Nom du groupe</h2>
                     <input name="name" type="text" value="<c:out value="${name}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>
+                    <script type="text/javascript" src="script.js"></script>
                 </form>
-                <script type="text/javascript" src="script.js"></script>
             </div>
         </div>
     </body>
