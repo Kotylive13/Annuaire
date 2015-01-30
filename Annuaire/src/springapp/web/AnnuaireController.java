@@ -2,6 +2,8 @@ package springapp.web;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -32,7 +34,7 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/create_person")
     public ModelAndView create_persons() {
-        return new ModelAndView("edit_person");
+        return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
     }
     
     @RequestMapping(value = "/detail_person")
@@ -42,7 +44,11 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/edit_person")
     public ModelAndView edit_persons(@RequestParam(required = true) String id) {
-        return new ModelAndView("edit_person", "person", personManager.find(id));
+    	Map<String, Object> model = new HashMap<String, Object>();
+    	model.put("person", personManager.find(id));
+    	model.put("groupes", groupeManager.findAll());
+    	
+        return new ModelAndView("edit_person");
     }
     
     @RequestMapping(value = "/delete_person")

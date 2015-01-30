@@ -18,13 +18,21 @@
 			<div class="head">
 				<a href="/Annuaire/"><img src="user.png" alt="Accueil" /></a>
 			</div>
-			<ul>
-				<c:forEach var="person" items="${groupe.persons}">
-					<li><a
-						href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out
-								value="${person.firstName}" /> <c:out value="${person.lastName}" /></a></li>
-				</c:forEach>
-			</ul>
+			
+			<c:choose>
+		  	  <c:when test="${not empty groupe.persons}">
+		  	  	<ul>
+					<c:forEach var="person" items="${groupe.persons}">
+						<li><a
+							href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out
+									value="${person.firstName}" /> <c:out value="${person.lastName}" /></a></li>
+					</c:forEach>
+				</ul>
+			 </c:when>
+		  	  <c:otherwise>
+		  	  	Personne n'est inscrit à ce groupe.
+		  	  </c:otherwise>
+			</c:choose>
 
 			<div class="list">
 				<c:if test="${sessionScope.user == 'admin'}">

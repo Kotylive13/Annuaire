@@ -33,7 +33,6 @@ public class GroupeManager implements IGroupeManager {
 
 	@Override
 	public Groupe find(String id) {
-		System.out.println(em.find(Groupe.class, id).getPersons());
 		return em.find(Groupe.class, id);
 	}
 
