@@ -14,7 +14,6 @@
     </head>
     <body>
         <jsp:include page="menu.jsp" />
-        
         <div class="main">
             <div class="column">
             	<c:choose>
@@ -46,10 +45,10 @@
                     <input name="firstName" type="text" value="<c:out value="${firstName}"/>" />
                     <h2>Nom</h2>
                     <input name="lastName" type="text" value="<c:out value="${lastName}"/>" />
-                    <h2>Mail</h2>
-                    <input name="mail" type="text" value="<c:out value="${mail}"/>" />
                     <h2>Site web</h2>
                     <input name="website" type="text" value="<c:out value="${website}"/>" />
+                    <h2>Mail</h2>
+                    <input name="mail" type="text" value="<c:out value="${mail}"/>" />
                     <h2>Date de naissance</h2>
                     <input name="birthDate" type="text" value="<c:out value="${birthDate}"/>" />
                     <h2>Mot de passe</h2>

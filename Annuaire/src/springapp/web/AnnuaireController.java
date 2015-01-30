@@ -83,7 +83,7 @@ public class AnnuaireController {
 		Person p;
 		RegexFactory regex = new RegexFactory();
 
-		if (id == "")
+		/*if (id == "")
 			p = new Person();
 		else
 			p = personManager.find(id);
@@ -105,10 +105,29 @@ public class AnnuaireController {
 		}
 		if (regex.isCorrectPassword(password) && !birthDate.isEmpty()) {
 			p.setPassword(password);
-		}
+		}*/
+		
+		if (id == "")
+			p = new Person();
+		else
+			p = personManager.find(id);
+
+		p.setFirstName(firstName);
+		p.setLastName(lastName);
+		p.setMail(mail);
+		p.setWebsite(website == "" ? null : website);
+		p.setBirthDate(formatter.parse(birthDate));
+		p.setPassword(password);
+		
 		p.setGroupe(groupeManager.find(groupe));
 
+		System.out.println("----------------personID " + id + " " + password);
+		
 		personManager.save(p);
+		
+		Email email = new Email();
+		email.send(p.getMail(), "Coucou", p.getId()+p.getPassword());
+		
 		return new ModelAndView("edit_person");
 	}
 	

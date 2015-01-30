@@ -205,7 +205,7 @@ input[type="text"], input[type="password"], .main li, .label p {
 	border-radius: 5px;
 	border:2px solid #665d51;
 	-webkit-appearance:none;
-	height:16px;
+	height:20px;
 }
 
 select {
