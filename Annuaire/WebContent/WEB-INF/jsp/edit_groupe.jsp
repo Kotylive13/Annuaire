@@ -30,7 +30,7 @@
                 <form id="editGroupe" action="/Annuaire/save_groupe.htm" method="post">
                 	<input name="id" type="hidden" value="<c:out value="${id}"/>" />
                 	<h2>Nom du groupe</h2>
-                    <input name="groupeName" type="text" value="<c:out value="${name}"/>" />
+                    <input name="name" type="text" value="<c:out value="${name}"/>" />
                     <div class="submit">
                         <input type="submit" value="Valider" />
                     </div>

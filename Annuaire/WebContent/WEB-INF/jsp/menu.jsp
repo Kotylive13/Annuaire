@@ -2,7 +2,7 @@
 
 <div class="menu_bar">
     <ul>
-        <li class="left_button"><a href="/Annuaire/annuaire_persons.htm">Accueil</a></li>
+        <li class="left_button"><a href="/Annuaire/annuaire_persons.htm">Personnes</a></li>
         <li class="left_button"><a href="/Annuaire/annuaire_groupes.htm">Groupes</a></li>
         
         <c:choose>

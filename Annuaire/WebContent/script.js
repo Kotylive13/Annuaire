@@ -66,7 +66,7 @@ $( "#editPerson" ).validate({
 $( "#editGroupe" ).validate({
   errorElement: 'div',
     rules: {
-      groupeName: {
+      name: {
         required: true
       }
     }

@@ -13,7 +13,8 @@
 	<script type="text/javascript" src="jquery.validate.js"></script>
 	<script type="text/javascript" src="messages_fr.js"></script>
 </head>
-	<body>	
+	<body>
+		<jsp:include page="menu.jsp" />
 		<div class="main">
 			<div class="column">
 				<h1>Mot de passe oublié</h1>
