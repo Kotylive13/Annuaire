@@ -13,6 +13,7 @@
 	<jsp:include page="menu.jsp" />
 
 	<div class="main">
+	page à voir
 		<div class="column">
 			<h1>${groupe.name}</h1>
 			<div class="head">

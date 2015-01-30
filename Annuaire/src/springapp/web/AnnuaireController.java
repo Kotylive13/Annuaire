@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import springapp.groupe.Groupe;
+import springapp.groupe.GroupeManager;
 import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
@@ -132,8 +134,21 @@ public class AnnuaireController {
         return new ModelAndView("edit_groupe");
     }
     
+    //Avant modification
+    /*@RequestMapping(value = "/detail_groupe")
+    public ModelAndView detail_groupe(@RequestParam(required = true) String id) {
+        return new ModelAndView("detail_groupe", "groupe", groupeManager.find(id));
+    }*/
+    
     @RequestMapping(value = "/detail_groupe")
     public ModelAndView detail_groupe(@RequestParam(required = true) String id) {
+    	
+    	Groupe g = groupeManager.find(id);
+    	Set<Person> persons = g.getPersons();
+    	for(Person person : persons){
+    		System.out.println("-----------------------" + person.getFirstName());
+    	}
+    	
         return new ModelAndView("detail_groupe", "groupe", groupeManager.find(id));
     }
     
@@ -185,7 +200,7 @@ public class AnnuaireController {
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:annuaire_persons.htm";
+		return "redirect:connection.htm";
 	}
 
 	@RequestMapping(value = "/login_forgot")

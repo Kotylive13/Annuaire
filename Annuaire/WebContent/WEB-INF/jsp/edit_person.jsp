@@ -36,6 +36,7 @@
 				  	<c:set var="website" value="${person.website}"/>
 				  	<fmt:formatDate var="birthDate" pattern="dd/MM/yyyy" value="${person.birthDate}"/>
 				  	<c:set var="password" value="${person.password}"/>
+				  	<c:set var="passwordConfirm" value="${person.password}"/>
 				</c:if>
                 
                 <form id="editPerson" action="/Annuaire/save_person.htm" method="post">
@@ -53,7 +54,7 @@
                     <h2>Mot de passe</h2>
                     <input id="password" name="password" type="password" value="<c:out value="${password}"/>" />
                     <h2>Confirmation</h2>
-                    <input name="passwordConfirm" type="password" />
+                    <input name="passwordConfirm" type="password" value="<c:out value="${password}"/>" />
                     <h2>Groupe</h2>
                     <select name="groupe">
                     	<c:choose>
