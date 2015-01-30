@@ -2,7 +2,15 @@ package springapp.web;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Properties;
 
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,8 +165,57 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/generate_login")
-    public ModelAndView generate_login() {
-    	System.out.println("---------------------------coucouuuuuuuuuuuuuuuuuu");
+    public ModelAndView generate_login()  {
+    	
+    	// Recipient's email ID needs to be mentioned.
+        String to = "marcel.venturino@gmail.com";//change accordingly
+
+        // Sender's email ID needs to be mentioned
+        String from = "annuaire.m2isl@gmail.com";//change accordingly
+        final String username = "annuaire.m2isl";//change accordingly
+        final String password = "Annuaire";//change accordingly
+
+        // Assuming you are sending email through relay.jangosmtp.net
+        String host = "smtp.gmail.com";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        // Get the Session object.
+        Session session = Session.getInstance(props,
+        new javax.mail.Authenticator() {
+           protected PasswordAuthentication getPasswordAuthentication() {
+              return new PasswordAuthentication(username, password);
+           }
+        });
+
+        try {
+           // Create a default MimeMessage object.
+           Message message = new MimeMessage(session);
+
+           // Set From: header field of the header.
+           message.setFrom(new InternetAddress(from));
+
+           // Set To: header field of the header.
+           message.setRecipients(Message.RecipientType.TO,
+           InternetAddress.parse(to));
+
+           // Set Subject: header field
+           message.setSubject("Gros caca");
+
+           // Now set the actual message
+           message.setText("Je te chie dessus");
+
+           // Send message
+           Transport.send(message);
+
+        } catch (MessagingException e) {
+              throw new RuntimeException(e);
+        }
+		
     	return new ModelAndView("connection");
     }
 }
