@@ -22,6 +22,15 @@
 				<div class="head">
 					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
 				</div>
+				
+				<form id="findPersons" action="/Annuaire/find_persons.htm" method="get">
+                	<h2>Recherche</h2>
+                    <input name="name" type="text" value="<c:out value="${name}"/>" />
+                    <div class="submit">
+                        <input type="submit" value="Valider" />
+                    </div>
+                </form>
+                
 				<c:choose>
 			  		<c:when test="${not empty persons}">         
 						<ul>
@@ -34,6 +43,20 @@
 			  	  		<h2 class="center">Aucune personne présente dans l'annuaire.</h2>
 			  	  	</c:otherwise>
 				</c:choose>
+				
+				<p>
+				<c:forEach var="page" begin="${firstPage}" end="${lastPage}">
+				
+					<c:choose>
+				  		<c:when test="${page eq param.page}">         
+							[<c:out value="${page}"/>]
+						</c:when>
+				  		<c:otherwise>
+				  	  		<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${page}"/>"><c:out value="${page}"/></a>
+				  	  	</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				</p>
 		    </div>
 		</div>
 	</body>

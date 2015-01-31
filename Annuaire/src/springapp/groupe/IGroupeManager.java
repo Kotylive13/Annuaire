@@ -36,4 +36,6 @@ public interface IGroupeManager {
 	 * @return int
 	 */
 	int delete(String id);
+
+	Collection<Groupe> findByName(String name);
 }

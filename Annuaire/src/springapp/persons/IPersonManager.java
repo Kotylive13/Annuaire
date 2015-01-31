@@ -22,6 +22,8 @@ public interface IPersonManager {
 	 * @return Person
 	 */
 	Person find(String id);
+
+	Collection<Person> findByName(String name);
 	
 	/**
 	 * Modification ou ajout d'une nouvelle personne

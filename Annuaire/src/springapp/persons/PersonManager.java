@@ -50,6 +50,17 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
+	public Collection<Person> findByName(String name) {
+		return em.createQuery(
+			"Select p from Person p " + 
+			"where p.firstName like :firstName OR " + 
+			"p.lastName like :lastName " + 
+			"order by p.lastName, p.firstName", Person.class)
+			.setParameter("firstName", "%" + name + "%")
+			.setParameter("lastName", "%" + name + "%").getResultList();
+	}
+
+	@Override
 	public Person save(Person p) {
 		PasswordUtils passwordUtil = new PasswordUtils();
 		String password = p.getPassword();
@@ -64,5 +75,4 @@ public class PersonManager implements IPersonManager {
 		return em.createQuery("delete from Person p where p.id = :id")
 				.setParameter("id", id).executeUpdate();
 	}
-
 }

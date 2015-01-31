@@ -81,4 +81,13 @@ public class GroupeManager implements IGroupeManager {
 		return em.createQuery("delete from Groupe g where g.id = :id")
 				.setParameter("id", id).executeUpdate();
 	}
+	
+	@Override
+	public Collection<Groupe> findByName(String name) {
+		return em.createQuery(
+			"Select g from Groupe g " + 
+			"where g.name like :name " +
+			"order by g.name", Groupe.class)
+			.setParameter("name", "%" + name + "%").getResultList();
+	}
 }
