@@ -218,7 +218,7 @@ public class AnnuaireController {
 					  "Cordialement.";
 			
 			Email email = new Email();
-			email.send("philippe.mothais@gmail.com", "Changement mot de passe", message);
+			email.send(p.getMail(), "Changement mot de passe", message);
 		}
 		
 		return new ModelAndView("connection");
