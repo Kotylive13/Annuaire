@@ -142,8 +142,6 @@ public class AnnuaireController {
     	if (groupeManager.find(id).getPersons().isEmpty()) {
     		groupeManager.delete(id);
     	}
-//    	else
-//    		System.out.println("coucouuuuuu");
     	return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
     }
     
@@ -154,10 +152,18 @@ public class AnnuaireController {
     		) throws ParseException {
     	
     	Groupe g;
+    	RegexFactory regex = new RegexFactory();
     	
     	if(id == "")
     		g = new Groupe();
     	else g = groupeManager.find(id);
+    	
+    	if (!regex.isCorrectName(name)) { 
+    		Map<String, String> model = new HashMap<String, String>();
+        	model.put("error", "error");
+        	model.put("grosse_erreur", "grosse erreur");
+    		return new ModelAndView("popup", model); 
+    	}
     	
     	g.setName(name);
     	
@@ -222,5 +228,11 @@ public class AnnuaireController {
 		}
 		
 		return new ModelAndView("connection");
+	}
+	
+	@RequestMapping(value = "/popup")
+	public ModelAndView show_popup() {
+		
+		return new ModelAndView("popup");
 	}
 }
