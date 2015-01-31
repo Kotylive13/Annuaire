@@ -37,7 +37,7 @@
 					<h2>Groupe</h2>
 					<c:forEach var="groupe" items="${groupes}">
 						<c:if test="${person.groupe.id == groupe.id}">
-		                	<div class="label"><p><c:out value="${groupe.name}"/></p></div>
+		                	<div class="label"><p><a href="/Annuaire/detail_groupe.htm?id=<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></a></p></div>
 						</c:if>
 					</c:forEach>			
 					<c:choose>
