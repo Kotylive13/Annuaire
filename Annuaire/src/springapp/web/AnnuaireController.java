@@ -42,12 +42,16 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/create_person")
-    public ModelAndView create_persons() {
+    public ModelAndView create_person(HttpSession session) {
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin"))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    	
         return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
     }
     
     @RequestMapping(value = "/detail_person")
-    public ModelAndView detail_persons(@RequestParam(required = true) String id) {
+    public ModelAndView detail_person(@RequestParam(required = true) String id) {
     	Map<String, Object> model = new HashMap<String, Object>();
     	model.put("person", personManager.find(id));
     	model.put("groupes", groupeManager.findAll());
@@ -55,7 +59,14 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/edit_person")
-    public ModelAndView edit_persons(@RequestParam(required = true) String id) {
+    public ModelAndView edit_person(@RequestParam(required = true) String id,
+    		HttpSession session) {
+
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin") && 
+    	   !session.getAttribute("user").equals(id))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    	
     	Map<String, Object> model = new HashMap<String, Object>();
     	model.put("person", personManager.find(id));
     	model.put("groupes", groupeManager.findAll());
@@ -64,7 +75,13 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/delete_person")
-    public ModelAndView delete_persons(@RequestParam(required = true) String id) {
+    public ModelAndView delete_person(@RequestParam(required = true) String id,
+    		HttpSession session) {
+    	
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin"))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    		
     	personManager.delete(id);
     	return new ModelAndView("annuaire_persons", "persons", personManager.findAll());
     }
@@ -72,14 +89,20 @@ public class AnnuaireController {
     private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     
     @RequestMapping(value = "/save_person")
-	public ModelAndView save_persons(@RequestParam(required = true) String id,
+	public ModelAndView save_person(@RequestParam(required = true) String id,
 			@RequestParam(required = true) String firstName,
 			@RequestParam(required = true) String lastName,
 			@RequestParam(required = true) String mail,
 			@RequestParam(required = true) String website,
 			@RequestParam(required = true) String birthDate,
 			@RequestParam(required = true) String password,
-			@RequestParam(required = true) String groupe) throws ParseException {
+			@RequestParam(required = true) String groupe,
+			HttpSession session) {
+
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin") && 
+    	   !session.getAttribute("user").equals(id))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
     	
 		Person p;
 		RegexFactory regex = new RegexFactory();
@@ -102,7 +125,11 @@ public class AnnuaireController {
 			p.setWebsite(website);
 		}
 		if (regex.isCorrectDate(birthDate)) {
-			p.setBirthDate(formatter.parse(birthDate));
+			try {
+				p.setBirthDate(formatter.parse(birthDate));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
 		}
 		if (regex.isCorrectPassword(password)) {
 			p.setPassword(password);
@@ -129,7 +156,12 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/create_groupe")
-    public ModelAndView create_groupe() {
+    public ModelAndView create_groupe(HttpSession session) {
+    	
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin"))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    	
         return new ModelAndView("edit_groupe");
     }
     
@@ -139,24 +171,44 @@ public class AnnuaireController {
     }
     
     @RequestMapping(value = "/edit_groupe")
-    public ModelAndView edit_groupe(@RequestParam(required = true) String id) {
+    public ModelAndView edit_groupe(@RequestParam(required = true) String id,
+    		HttpSession session) {
+    	
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin"))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    	
         return new ModelAndView("edit_groupe", "groupe", groupeManager.find(id));
     }
     
     @RequestMapping(value = "/delete_groupe")
-    public ModelAndView delete_groupe(@RequestParam(required = true) String id) {
+    public ModelAndView delete_groupe(@RequestParam(required = true) String id,
+    		HttpSession session) {
+    	
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin"))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    	
     	if (groupeManager.find(id).getPersons().isEmpty()) {
     		groupeManager.delete(id);
     	}
+    	else {
+    		// TODO
+    	}
+    	
     	return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
     }
     
     @RequestMapping(value = "/save_groupe")
     public ModelAndView save_groupe(
     		@RequestParam(required = true) String id,
-    		@RequestParam(required = true) String name
-    		) throws ParseException {
+    		@RequestParam(required = true) String name,
+    		HttpSession session) {
     	
+    	if(session.getAttribute("user") == null ||
+    	   !session.getAttribute("user").equals("admin"))
+    		return new ModelAndView("redirect:annuaire_persons.htm");
+    	    	
     	Groupe g;
     	RegexFactory regex = new RegexFactory();
     	Map<String, String> model = new HashMap<String, String>();
@@ -198,7 +250,6 @@ public class AnnuaireController {
 			    && personManager.find(login).getPassword().equals(password)) {
 			
 			session.setAttribute("user", login);
-			Person p = personManager.find(login);
 			model.put("type", "success");
 	    	model.put("message", "La connexion a réussie.");
 			return new ModelAndView("annuaire_persons", model);
