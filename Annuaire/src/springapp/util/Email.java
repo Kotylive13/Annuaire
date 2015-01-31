@@ -18,10 +18,25 @@ import javax.mail.internet.MimeMessage;
 
 public class Email {
 	
+	/**
+	 * Expéditeur
+	 */
 	// Sender's email ID needs to be mentioned
 	private final String from;
+	
+	/**
+	 * Nom de l'expéditeur
+	 */
 	private final String username;
+	
+	/**
+	 * Mot de passe de l'expéditeur
+	 */
 	private final String password;
+	
+	/**
+	 * Host smtp de l'adresse mail
+	 */
 	private final String host;
 	
 	public Email() {
@@ -31,6 +46,12 @@ public class Email {
 		host = "smtp.gmail.com";
 	}
 	
+	/**
+	 * Méthode permettant d'envoyer un email
+	 * @param String to
+	 * @param String subject
+	 * @param String text
+	 */
 	public void send (String to, String subject, String text) {
 		
 		Properties props = new Properties();
