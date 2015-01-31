@@ -151,10 +151,11 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/delete_groupe")
     public ModelAndView delete_groupe(@RequestParam(required = true) String id) {
-    	if (groupeManager.find(id).getPersons().isEmpty())
+    	if (groupeManager.find(id).getPersons().isEmpty()) {
     		groupeManager.delete(id);
-    	else
-    		System.out.println("coucouuuuuu");
+    	}
+//    	else
+//    		System.out.println("coucouuuuuu");
     	return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
     }
     
@@ -184,9 +185,9 @@ public class AnnuaireController {
 	@RequestMapping(value = "/login")
 	public String login(@RequestParam(required = true) String login,
 			@RequestParam(required = true) String password, HttpSession session) {
-
+		PasswordUtils passwordUtil = new PasswordUtils();
 		if (login.equals("admin") && password.equals("admin")
-				|| personManager.find(login).getPassword().equals(password))
+				|| personManager.find(login).getPassword().equals(passwordUtil.encryptPassword(password)))
 			session.setAttribute("user", login);
 
 		return "redirect:annuaire_persons.htm";
