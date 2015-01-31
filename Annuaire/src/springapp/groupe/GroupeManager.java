@@ -1,7 +1,6 @@
 package springapp.groupe;
 
 import java.util.Collection;
-import java.util.HashSet;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.LocalBean;
@@ -9,8 +8,6 @@ import javax.ejb.Startup;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import springapp.persons.Person;
 
 @Stateless
 @LocalBean()
@@ -36,7 +33,7 @@ public class GroupeManager implements IGroupeManager {
 
 	@Override
 	public Groupe find(String id) {
-		em.find(Groupe.class, id).setPersons(new HashSet<Person>());
+		System.out.println(em.find(Groupe.class, id).getPersons());
 		return em.find(Groupe.class, id);
 	}
 

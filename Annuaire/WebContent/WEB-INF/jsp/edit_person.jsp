@@ -58,23 +58,20 @@
                     <h2>Groupe</h2>
                     <select name="groupe">
                     	<c:choose>
-                    	<c:when test="${not empty person}">
-                    	
-						<option>test</option>
-                    	<c:forEach var="groupe" items="${groupes}">
-                    			<option>test</option>
-								<c:if test="${person.groupe.id eq groupe.id}">
-								<option  value="<c:out value="${groupe.id}"/>" selected="selected" ><c:out value="${groupe.name}"/></option>
-								</c:if>
-								<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
-							</c:forEach>
-
-						</c:when>
-						<c:otherwise>
-						<c:forEach var="groupe" items="${groupes}">
-							<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
-						</c:forEach>
-						</c:otherwise>
+	                    	<c:when test="${not empty person}">	                    	
+								<c:forEach var="groupe" items="${groupes}">
+									<c:if test="${person.groupe.id eq groupe.id}">
+									<option  value="<c:out value="${groupe.id}"/>" selected="selected" ><c:out value="${groupe.name}"/></option>
+									</c:if>
+									<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
+								</c:forEach>	
+							</c:when>
+							
+							<c:otherwise>
+								<c:forEach var="groupe" items="${groupes}">
+									<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
+								</c:forEach>
+							</c:otherwise>
 						</c:choose>
                     </select>
                     <div class="submit">

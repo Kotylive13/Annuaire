@@ -30,7 +30,8 @@
 					  		<h2>Mail</h2>	
 							<div class="label"><p><c:out value="${person.mail}"/></p></div>
 							<h2>Date de naissance</h2>	
-							<div class="label"><p><c:out value="${person.birthDate}"/></p></div>
+							<fmt:formatDate var="birthDate" pattern="dd/MM/yyyy" value="${person.birthDate}"/>
+							<div class="label"><p><c:out value="${birthDate}"/></p></div>
 				  	  	</c:when>
 					</c:choose>
 					<!-- a rajouter le groupe -->

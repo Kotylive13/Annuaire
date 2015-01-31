@@ -4,16 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Set;
 
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import springapp.groupe.Groupe;
-import springapp.groupe.GroupeManager;
 import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
+import springapp.util.Email;
 import springapp.util.Generate;
 import springapp.util.RegexFactory;
-import springapp.util.Email;
 
 @Controller()
 public class AnnuaireController {
@@ -61,7 +52,7 @@ public class AnnuaireController {
     	model.put("person", personManager.find(id));
     	model.put("groupes", groupeManager.findAll());
     	
-        return new ModelAndView("edit_person", "person", personManager.find(id));
+        return new ModelAndView("edit_person", model);
     }
     
     @RequestMapping(value = "/delete_person")
