@@ -227,6 +227,7 @@ public class AnnuaireController {
 			) throws ParseException {
 
 		Person p = personManager.find(login);
+		Map<String, String> model = new HashMap<String, String>();
 		
 		if (mail.equals(p.getMail())) {
 			
@@ -245,8 +246,13 @@ public class AnnuaireController {
 			
 			Email email = new Email();
 			email.send(p.getMail(), "Changement mot de passe", message);
+			model.put("type", "success");
+	    	model.put("message", "Un nouveau mot de passe vous a été envoyé par e-mail.");
+			return new ModelAndView("connection", model);
+		} else {
+			model.put("type", "error");
+	    	model.put("message", "Cette adresse e-mail est introuvable dans l'annuaire.");
+			return new ModelAndView("login_forgot", model);
 		}
-		
-		return new ModelAndView("connection");
 	}
 }
