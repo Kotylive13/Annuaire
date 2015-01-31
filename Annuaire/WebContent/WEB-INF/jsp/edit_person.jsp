@@ -60,10 +60,14 @@
                     	<c:choose>
 	                    	<c:when test="${not empty person}">	                    	
 								<c:forEach var="groupe" items="${groupes}">
-									<c:if test="${person.groupe.id eq groupe.id}">
-									<option  value="<c:out value="${groupe.id}"/>" selected="selected" ><c:out value="${groupe.name}"/></option>
-									</c:if>
-									<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
+									<c:choose>
+									<c:when test="${person.groupe.id eq groupe.id}">
+										<option  value="<c:out value="${groupe.id}"/>" selected="selected" ><c:out value="${groupe.name}"/></option>
+									</c:when>
+									<c:otherwise>
+										<option value="<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></option>
+									</c:otherwise>
+									</c:choose>
 								</c:forEach>	
 							</c:when>
 							
