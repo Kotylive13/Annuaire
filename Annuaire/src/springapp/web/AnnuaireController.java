@@ -1,3 +1,9 @@
+/**
+ * Classe permettant l'aguillage des pages
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.web;
 
 import java.text.ParseException;

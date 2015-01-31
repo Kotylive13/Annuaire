@@ -1,18 +1,39 @@
+/**
+ * Interface du GroupeManager
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.groupe;
 
 import java.util.Collection;
 
 public interface IGroupeManager {
 
-	// récupérer les groupes
+	/**
+	 * Récupérer les groupes
+	 * @return Collection<Groupe>
+	 */
 	Collection<Groupe> findAll();
 
-	// lire un groupe
+	/**
+	 * Lire un groupe
+	 * @param id
+	 * @return Groupe
+	 */
 	Groupe find(String id);
 
-	// modification ou ajout d'une nouvelle personne
+	/**
+	 * Modification ou ajout d'une nouvelle personne
+	 * @param Groupe g
+	 * @return Groupe
+	 */
 	Groupe save(Groupe g);
 	
-	// suppresion d'une personne
+	/**
+	 * Suppression d'une personne
+	 * @param String id
+	 * @return int
+	 */
 	int delete(String id);
 }

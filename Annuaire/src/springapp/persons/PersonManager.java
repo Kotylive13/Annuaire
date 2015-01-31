@@ -1,3 +1,9 @@
+/**
+ * Classe représentant le PersonManager
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.persons;
 
 import java.util.Collection;

@@ -1,3 +1,9 @@
+/**
+ * Classe permettant d'envoyer des emails
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.util;
 
 import java.util.Properties;

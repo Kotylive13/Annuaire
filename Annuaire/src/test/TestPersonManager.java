@@ -1,3 +1,9 @@
+/**
+ * Classe JUNIT testant la classe PersonManager
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,18 +1,39 @@
+/**
+ * Interface du PersonManager
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.persons;
 
 import java.util.Collection;
 
 public interface IPersonManager {
 
-	// récupérer les personnes
+	/**
+	 * Récupérer les personnes
+	 * @return Collection<Person>
+	 */
 	Collection<Person> findAll();
 
-	// lire une personne
+	/**
+	 * Lire une personne
+	 * @param String id
+	 * @return Person
+	 */
 	Person find(String id);
 	
-	// modification ou ajout d'une nouvelle personne
+	/**
+	 * Modification ou ajout d'une nouvelle personne
+	 * @param Person p
+	 * @return Person
+	 */
 	Person save(Person p);
 	
-	// suppresion d'une personne
+	/**
+	 * suppression d'une personne
+	 * @param String id
+	 * @return int
+	 */
 	int delete(String id);
 }

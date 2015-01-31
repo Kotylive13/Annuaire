@@ -1,3 +1,9 @@
+/**
+ * Classe étant une trousse à outil pour les password
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.util;
 
 import java.util.Random;

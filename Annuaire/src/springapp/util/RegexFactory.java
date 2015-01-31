@@ -1,3 +1,9 @@
+/**
+ * Classe testant plusieurs regex
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.util;
 
 public class RegexFactory {
