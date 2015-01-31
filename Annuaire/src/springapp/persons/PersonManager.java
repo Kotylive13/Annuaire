@@ -35,8 +35,9 @@ public class PersonManager implements IPersonManager {
 
 	@Override
 	public Collection<Person> findAll() {
-		return em.createQuery("Select p from Person p", Person.class)
-				.getResultList();
+		return em.createQuery(
+				"Select p from Person p order by p.lastName, p.firstName",
+				Person.class).getResultList();
 	}
 
 	@Override

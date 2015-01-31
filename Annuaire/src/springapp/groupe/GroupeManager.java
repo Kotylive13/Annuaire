@@ -46,8 +46,8 @@ public class GroupeManager implements IGroupeManager {
 	 */
 	@Override
 	public Collection<Groupe> findAll() {
-		return em.createQuery("Select g from Groupe g", Groupe.class)
-				.getResultList();
+		return em.createQuery("Select g from Groupe g order by g.name",
+				Groupe.class).getResultList();
 	}
 
 	/**
