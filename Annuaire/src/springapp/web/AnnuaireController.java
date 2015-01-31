@@ -186,16 +186,27 @@ public class AnnuaireController {
     }
 
 	@RequestMapping(value = "/login")
-	public String login(
+	public ModelAndView login(
 			@RequestParam(required = true) String login,
 			@RequestParam(required = true) String password, 
 			HttpSession session) {
 		
-		if (login.equals("admin") && password.equals("admin")
-				|| personManager.find(login).getPassword().equals(password))
+		Map<String, String> model = new HashMap<String, String>();
+		
+		if (login.equals("admin") && password.equals("admin") 
+			    || personManager.find(login) != null 
+			    && personManager.find(login).getPassword().equals(password)) {
+			
 			session.setAttribute("user", login);
-
-		return "redirect:annuaire_persons.htm";
+			Person p = personManager.find(login);
+			model.put("type", "success");
+	    	model.put("message", "La connexion a réussie.");
+			return new ModelAndView("annuaire_persons", model);
+	    }
+		
+		model.put("type", "error");
+    	model.put("message", "Le login ou le mot de passe n'est pas correct.");
+		return new ModelAndView("connection", model);
 	}
 
 	@RequestMapping(value = "/logout")
