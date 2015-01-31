@@ -19,7 +19,7 @@ import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
 import springapp.util.Email;
-import springapp.util.Generate;
+import springapp.util.PasswordUtils;
 import springapp.util.RegexFactory;
 
 @Controller()
@@ -75,6 +75,7 @@ public class AnnuaireController {
     	
 		Person p;
 		RegexFactory regex = new RegexFactory();
+		PasswordUtils passwordUtil = new PasswordUtils();
 
 		if (id == "")
 			p = new Person();
@@ -97,7 +98,7 @@ public class AnnuaireController {
 			p.setBirthDate(formatter.parse(birthDate));
 		}
 		if (regex.isCorrectPassword(password) && !password.isEmpty()) {
-			p.setPassword(password);
+			p.setPassword(passwordUtil.encryptPassword(password));
 		}
 		
 		p.setGroupe(groupeManager.find(groupe));
@@ -108,7 +109,7 @@ public class AnnuaireController {
 		String message;
 		message = "Bonjour, voici vos identifiants : \n\n" +
 				  "login : " + p.getId() + "\n" +
-				  "mot de passe : " + p.getPassword() + "\n\n" +
+				  "mot de passe : " + passwordUtil.decrypt(p.getPassword()) + "\n\n" +
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
@@ -212,8 +213,8 @@ public class AnnuaireController {
 		
 		if (mail.equals(p.getMail())) {
 			
-			Generate generate = new Generate();
-			p.setPassword(generate.generatePassword());
+			PasswordUtils passwordUtils = new PasswordUtils();
+			p.setPassword(passwordUtils.generatePassword());
 			
 			p = personManager.save(p);
 			
