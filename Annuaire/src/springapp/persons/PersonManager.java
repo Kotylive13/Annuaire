@@ -9,6 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import springapp.util.PasswordUtils;
+
 @Stateless
 @LocalBean()
 @Startup
@@ -32,12 +34,17 @@ public class PersonManager implements IPersonManager {
 	}
 
 	@Override
-	public Person find(String id) {		 
-		return em.find(Person.class, id);
+	public Person find(String id) {
+		PasswordUtils passwordUtil = new PasswordUtils();
+		Person p = em.find(Person.class, id);
+		p.setPassword(passwordUtil.decrypt(p.getPassword()));
+		return p;
 	}
 
 	@Override
 	public Person save(Person p) {
+		PasswordUtils passwordUtil = new PasswordUtils();
+		p.setPassword(passwordUtil.encryptPassword(p.getPassword()));
 		return em.merge(p);
 	}
 

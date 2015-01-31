@@ -78,7 +78,6 @@ public class AnnuaireController {
     	
 		Person p;
 		RegexFactory regex = new RegexFactory();
-		PasswordUtils passwordUtil = new PasswordUtils();
 
 		if (id == "")
 			p = new Person();
@@ -101,7 +100,7 @@ public class AnnuaireController {
 			p.setBirthDate(formatter.parse(birthDate));
 		}
 		if (regex.isCorrectPassword(password) && !password.isEmpty()) {
-			p.setPassword(passwordUtil.encryptPassword(password));
+			p.setPassword(password);
 		}
 		
 		p.setGroupe(groupeManager.find(groupe));
@@ -112,7 +111,7 @@ public class AnnuaireController {
 		String message;
 		message = "Bonjour, voici vos identifiants : \n\n" +
 				  "login : " + p.getId() + "\n" +
-				  "mot de passe : " + passwordUtil.decrypt(p.getPassword()) + "\n\n" +
+				  "mot de passe : " + p.getPassword() + "\n\n" +
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
