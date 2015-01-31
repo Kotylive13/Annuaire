@@ -78,7 +78,8 @@ public class AnnuaireController {
     	
 		Person p;
 		RegexFactory regex = new RegexFactory();
-
+		PasswordUtils passwordUtils = new PasswordUtils();
+		
 		if (id == "")
 			p = new Person();
 		else
@@ -111,7 +112,7 @@ public class AnnuaireController {
 		String message;
 		message = "Bonjour, voici vos identifiants : \n\n" +
 				  "login : " + p.getId() + "\n" +
-				  "mot de passe : " + p.getPassword() + "\n\n" +
+				  "mot de passe : " + passwordUtils.decrypt(p.getPassword()) + "\n\n" +
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
@@ -211,7 +212,7 @@ public class AnnuaireController {
 			String message;
 			message = "Bonjour, voici vos nouveaux identifiants : \n\n" +
 					  "login : " + p.getId() + "\n" +
-					  "mot de passe : " + p.getPassword() + "\n\n" +
+					  "mot de passe : " + passwordUtils.decrypt(p.getPassword()) + "\n\n" +
 					  "Ce mot de passe a été généré automatiquement, " +
 					  "nous vous conseillons de le modifier.\n\n" +
 					  "Cordialement.";
