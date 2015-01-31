@@ -4,7 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -78,29 +77,28 @@ public class AnnuaireController {
     	
 		Person p;
 		RegexFactory regex = new RegexFactory();
-		PasswordUtils passwordUtils = new PasswordUtils();
 		
 		if (id == "")
 			p = new Person();
 		else
 			p = personManager.find(id);
 
-		if (regex.isCorrectName(firstName) && !firstName.isEmpty()) {
+		if (regex.isCorrectName(firstName)) {
 			p.setFirstName(firstName);
 		}
-		if (regex.isCorrectName(lastName) && !lastName.isEmpty()) {
+		if (regex.isCorrectName(lastName)) {
 			p.setLastName(lastName);
 		}
-		if (regex.isCorrectEmail(mail) && !mail.isEmpty()) {
+		if (regex.isCorrectEmail(mail)) {
 			p.setMail(mail);
 		}
-		if (regex.isCorrectWebsite(website) && !website.isEmpty() ) {
-			p.setWebsite(website == "" ? null : website);
+		if (regex.isCorrectWebsite(website)) {
+			p.setWebsite(website);
 		}
-		if (regex.isCorrectDate(birthDate) && !birthDate.isEmpty()) {
+		if (regex.isCorrectDate(birthDate)) {
 			p.setBirthDate(formatter.parse(birthDate));
 		}
-		if (regex.isCorrectPassword(password) && !password.isEmpty()) {
+		if (regex.isCorrectPassword(password)) {
 			p.setPassword(password);
 		}
 		
@@ -173,9 +171,11 @@ public class AnnuaireController {
     }
 
 	@RequestMapping(value = "/login")
-	public String login(@RequestParam(required = true) String login,
-			@RequestParam(required = true) String password, HttpSession session) {
-		PasswordUtils passwordUtil = new PasswordUtils();
+	public String login(
+			@RequestParam(required = true) String login,
+			@RequestParam(required = true) String password, 
+			HttpSession session) {
+		
 		if (login.equals("admin") && password.equals("admin")
 				|| personManager.find(login).getPassword().equals(password))
 			session.setAttribute("user", login);
