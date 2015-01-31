@@ -1,22 +1,20 @@
 package springapp.util;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Pages {
 	final static int BY_PAGE = 10;
 	
-	private List<Object> subList;
+	private List<Object> subList = null;
 	
-	private int firstPage;
-	private int lastPage;
+	private int firstPage = 1;
+	private int lastPage = 1;
 
-	public Pages(int currentPage, List<Object> collection) 
+	public Pages(int currentPage, List<Object> allElement) 
 			throws Exception {		
+		if(allElement.size() == 0) return;
 		
 		--currentPage;
-		
-		List<Object> allElement = new ArrayList<Object>(collection);
 		
 		if(BY_PAGE*currentPage >= allElement.size())
 			throw new Exception();

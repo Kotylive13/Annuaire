@@ -68,9 +68,23 @@ public class AnnuaireController {
     }
     
 	@RequestMapping(value = "/find_persons")
-	public ModelAndView findPersons(@RequestParam(required = true) String name) {
-		return new ModelAndView("annuaire_persons", "persons",
-				personManager.findByName(name));
+	public ModelAndView findPersons(@RequestParam(required = true) String name,
+			@RequestParam(required = false) Integer page) {
+		
+    	if(page == null) return new ModelAndView("redirect:find_persons.htm?name="+name+"&page=1");
+     	
+    	try {
+    		Pages p = new Pages(page, new ArrayList<Object>(personManager.findByName(name)));
+    	
+    		Map<String, Object> model = new HashMap<String, Object>();
+        	model.put("persons", p.getSubList());
+        	model.put("firstPage", p.getFirstPage());
+        	model.put("lastPage", p.getLastPage());
+            return new ModelAndView("annuaire_persons", model);
+    	}
+    	catch(Exception e) {
+    		return new ModelAndView("redirect:find_persons.htm?name="+name+"&page=1");
+    	}
 	}
         
 
@@ -229,9 +243,23 @@ public class AnnuaireController {
     }    
 
 	@RequestMapping(value = "/find_groupes")
-	public ModelAndView findGroupes(@RequestParam(required = true) String name) {
-		return new ModelAndView("annuaire_groupes", "groupes",
-				groupeManager.findByName(name));
+	public ModelAndView findGroupes(@RequestParam(required = true) String name,
+			@RequestParam(required = false) Integer page) {
+		
+    	if(page == null) return new ModelAndView("redirect:find_groupes.htm?name="+name+"&page=1");
+     	
+    	try {
+    		Pages p = new Pages(page, new ArrayList<Object>(groupeManager.findByName(name)));
+    	
+    		Map<String, Object> model = new HashMap<String, Object>();
+        	model.put("groupes", p.getSubList());
+        	model.put("firstPage", p.getFirstPage());
+        	model.put("lastPage", p.getLastPage());
+            return new ModelAndView("annuaire_groupes", model);
+    	}
+    	catch(Exception e) {
+    		return new ModelAndView("redirect:find_groupes.htm?name="+name+"&page=1");
+    	}
 	}
     
 	/**
