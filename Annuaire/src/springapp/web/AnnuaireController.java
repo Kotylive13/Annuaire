@@ -232,10 +232,4 @@ public class AnnuaireController {
 		
 		return new ModelAndView("connection");
 	}
-	
-	@RequestMapping(value = "/popup")
-	public ModelAndView show_popup() {
-		
-		return new ModelAndView("popup");
-	}
 }
