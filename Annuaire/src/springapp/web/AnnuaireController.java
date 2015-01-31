@@ -112,7 +112,7 @@ public class AnnuaireController {
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
-		return new ModelAndView("edit_person");
+		return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
 	}
 	
     @RequestMapping(value = "/annuaire_groupes")

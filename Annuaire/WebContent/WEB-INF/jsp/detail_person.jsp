@@ -34,7 +34,8 @@
 							<div class="label"><p><c:out value="${birthDate}"/></p></div>
 				  	  	</c:when>
 					</c:choose>
-					<!-- a rajouter le groupe -->
+					<h2>Groupe</h2>	
+					<div class="label"><p><c:out value="${person.groupe}"/></p></div>
 					<c:choose>
 				  		<c:when test="${sessionScope.user == 'admin'}">
 				  	  		<a href="/Annuaire/edit_person.htm?id=<c:out value="${person.id}"/>" >

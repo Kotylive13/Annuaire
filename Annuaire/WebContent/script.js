@@ -51,7 +51,9 @@ $( "#editPerson" ).validate({
         date: true
       },
       password: {
-        required: true
+        required: true,
+        minlength: 6,
+        maxlength: 16
       },
       passwordConfirm: {
         required: true,
