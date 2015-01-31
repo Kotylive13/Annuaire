@@ -13,28 +13,29 @@
 	<jsp:include page="menu.jsp" />
 
 	<div class="main">
-	page à voir
 		<div class="column">
 			<h1>${groupe.name}</h1>
 			<div class="head">
 				<a href="/Annuaire/"><img src="user.png" alt="Accueil" /></a>
 			</div>
-			<div class="list">
-				<c:choose>
-			  		<c:when test="${not empty groupe.persons}">
-			  	  		<ul>
-							<c:forEach var="person" items="${groupe.persons}">
-								<li><a
-									href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out
-										value="${person.firstName}" /> <c:out value="${person.lastName}" /></a></li>
-							</c:forEach>
-						</ul>
-				 	</c:when>
-			  		<c:otherwise>
+			<c:choose>
+		  		<c:when test="${not empty groupe.persons}">
+		  	  		<ul class="ul_without_bottom">
+						<c:forEach var="person" items="${groupe.persons}">
+							<li><a
+								href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out
+									value="${person.firstName}" /> <c:out value="${person.lastName}" /></a></li>
+						</c:forEach>
+					</ul>
+			 	</c:when>
+		  		<c:otherwise>
+			  		<div class="list">
 			  	  		<h2>Personne n'est inscrit à ce groupe.</h2>
-			  	  	</c:otherwise>
-				</c:choose>
-				<c:if test="${sessionScope.user == 'admin'}">
+			  	  	</div>
+		  	  	</c:otherwise>
+			</c:choose>
+			<c:if test="${sessionScope.user == 'admin'}">
+				<div class="list">
 					<a
 						href="/Annuaire/edit_groupe.htm?id=<c:out value="${groupe.id}"/>">
 						<button class="editButton">Editer</button>
@@ -43,8 +44,9 @@
 						href="/Annuaire/delete_groupe.htm?id=<c:out value="${groupe.id}"/>">
 						<button class="removeButton">Supprimer</button>
 					</a>
-				</c:if>
-			</div>
+				</div>
+			</c:if>
+
 		</div>
 	</div>
 </body>

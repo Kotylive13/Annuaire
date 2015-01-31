@@ -172,6 +172,12 @@ img:hover{
 	padding: 6% 0 9% 0;
 }
 
+.main ul[class="ul_without_bottom"] {
+	width: 80%;
+	margin: 0 auto;
+	padding: 6% 0 0 0;
+}
+
 .bottom {
 	width: 80%;
 	margin: 0 auto;
@@ -233,7 +239,7 @@ select {
 	color:#9bbac3;
 }
 
- input[type="text"]:focus, input[type="password"]:focus {
+input[type="text"]:focus, input[type="password"]:focus {
  	border:2px solid #9bbac3;
  	color:#9bbac3;
 	transition:0.5s;
