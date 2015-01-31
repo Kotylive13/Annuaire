@@ -150,7 +150,10 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/delete_groupe")
     public ModelAndView delete_groupe(@RequestParam(required = true) String id) {
-    	groupeManager.delete(id);
+    	if (groupeManager.find(id).getPersons().isEmpty())
+    		groupeManager.delete(id);
+    	else
+    		System.out.println("coucouuuuuu");
     	return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
     }
     
