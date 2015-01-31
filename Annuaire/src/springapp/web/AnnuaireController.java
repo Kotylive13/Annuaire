@@ -153,22 +153,25 @@ public class AnnuaireController {
     	
     	Groupe g;
     	RegexFactory regex = new RegexFactory();
+    	Map<String, String> model = new HashMap<String, String>();
     	
     	if(id == "")
     		g = new Groupe();
     	else g = groupeManager.find(id);
     	
-    	if (!regex.isCorrectName(name)) { 
-    		Map<String, String> model = new HashMap<String, String>();
-        	model.put("error", "error");
-        	model.put("grosse_erreur", "grosse erreur");
-    		return new ModelAndView("popup", model); 
+    	if (!regex.isCorrectName(name)) {
+        	model.put("type", "error");
+        	model.put("message", "Ce nom de groupe n'est pas valable.");
+        	model.put("name", name);
+    		return new ModelAndView("edit_groupe", model);
     	}
     	
     	g.setName(name);
     	
         g = groupeManager.save(g);
-        return new ModelAndView("edit_groupe");
+        model.put("type", "success");
+    	model.put("message", "Le groupe a été ajouté avec succès.");
+        return new ModelAndView("edit_groupe", model);
     }
     
     @RequestMapping(value = "/connection")
