@@ -19,11 +19,24 @@ import springapp.persons.PersonManager;
 
 public class TestPersonManager {
 
+	/**
+	 * PersonManager
+	 */
 	private PersonManager personManager;
 	
+	/**
+	 * Person1
+	 */
 	private Person p1;
+	
+	/**
+	 * Person2
+	 */
 	private Person p2;
 	
+	/**
+	 * Constructeur de la classe et initialisation de variables
+	 */
 	public TestPersonManager() {
 		personManager = new PersonManager();
 		assertNotNull(personManager);
@@ -40,11 +53,17 @@ public class TestPersonManager {
 		personManager.save(p2);
 	}
 	
+	/**
+	 * Fonction testant la méthode find
+	 */
 	@Test
 	public void find() {		
 		assertEquals(p1, personManager.find(p1.getId()));
 	}
 	
+	/**
+	 * Fonction testant la méthode findAll
+	 */
 	@Test
 	public void findAll() {
 		Collection<Person> persons = personManager.findAll();
@@ -53,6 +72,9 @@ public class TestPersonManager {
 		assertTrue(persons.contains(p2));
 	}
 	
+	/**
+	 * Fonction testant la méthode delete
+	 */
 	@Test
 	public void delete() {
 		personManager.delete(p2.getId());

@@ -30,17 +30,31 @@ import springapp.util.RegexFactory;
 @Controller()
 public class AnnuaireController {
 
+	/**
+	 * PersonManager
+	 */
 	@Autowired
     IPersonManager personManager;
 	
+	/**
+	 * GroupeManager
+	 */
 	@Autowired
     IGroupeManager groupeManager;
 	
+	/**
+	 * Fonction permettant de mapper vers annuaire_persons
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/annuaire_persons")
     public ModelAndView annuaire_persons() {
         return new ModelAndView("annuaire_persons", "persons", personManager.findAll());
     }
     
+	/**
+	 * Fonction permettant de mapper vers create_person
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/create_person")
     public ModelAndView create_person(HttpSession session) {
     	if(session.getAttribute("user") == null ||
@@ -50,6 +64,10 @@ public class AnnuaireController {
         return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
     }
     
+	/**
+	 * Fonction permettant de mapper vers detail_person
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/detail_person")
     public ModelAndView detail_person(@RequestParam(required = true) String id) {
     	Map<String, Object> model = new HashMap<String, Object>();
@@ -58,6 +76,10 @@ public class AnnuaireController {
         return new ModelAndView("detail_person", model);
     }
     
+	/**
+	 * Fonction permettant de mapper vers edit_person
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/edit_person")
     public ModelAndView edit_person(@RequestParam(required = true) String id,
     		HttpSession session) {
@@ -74,6 +96,10 @@ public class AnnuaireController {
         return new ModelAndView("edit_person", model);
     }
     
+	/**
+	 * Fonction permettant de mapper vers delete_person
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/delete_person")
     public ModelAndView delete_person(@RequestParam(required = true) String id,
     		HttpSession session) {
@@ -86,8 +112,15 @@ public class AnnuaireController {
     	return new ModelAndView("annuaire_persons", "persons", personManager.findAll());
     }
     
+    /**
+     * Format de date
+     */
     private SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     
+	/**
+	 * Fonction permettant de mapper vers save_person
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/save_person")
 	public ModelAndView save_person(@RequestParam(required = true) String id,
 			@RequestParam(required = true) String firstName,
@@ -150,11 +183,19 @@ public class AnnuaireController {
 		return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
 	}
 	
+	/**
+	 * Fonction permettant de mapper vers annuaire_groupes
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/annuaire_groupes")
     public ModelAndView annuaire_groupes() {
         return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
     }
     
+	/**
+	 * Fonction permettant de mapper vers create_groupe
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/create_groupe")
     public ModelAndView create_groupe(HttpSession session) {
     	
@@ -165,11 +206,19 @@ public class AnnuaireController {
         return new ModelAndView("edit_groupe");
     }
     
+	/**
+	 * Fonction permettant de mapper vers detail_groupe
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/detail_groupe")
     public ModelAndView detail_groupe(@RequestParam(required = true) String id) {
         return new ModelAndView("detail_groupe", "groupe", groupeManager.find(id));
     }
     
+	/**
+	 * Fonction permettant de mapper vers edit_groupe
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/edit_groupe")
     public ModelAndView edit_groupe(@RequestParam(required = true) String id,
     		HttpSession session) {
@@ -181,6 +230,10 @@ public class AnnuaireController {
         return new ModelAndView("edit_groupe", "groupe", groupeManager.find(id));
     }
     
+	/**
+	 * Fonction permettant de mapper vers delete_groupe
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/delete_groupe")
     public ModelAndView delete_groupe(@RequestParam(required = true) String id,
     		HttpSession session) {
@@ -199,6 +252,10 @@ public class AnnuaireController {
     	return new ModelAndView("annuaire_groupes", "groupes", groupeManager.findAll());
     }
     
+	/**
+	 * Fonction permettant de mapper vers save_groupe
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/save_groupe")
     public ModelAndView save_groupe(
     		@RequestParam(required = true) String id,
@@ -232,11 +289,19 @@ public class AnnuaireController {
         return new ModelAndView("edit_groupe", model);
     }
     
+	/**
+	 * Fonction permettant de mapper vers connection
+	 * @return ModelAndView
+	 */
     @RequestMapping(value = "/connection")
     public ModelAndView connection() {
         return new ModelAndView("connection");
     }
 
+	/**
+	 * Fonction permettant de mapper vers login
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/login")
 	public ModelAndView login(
 			@RequestParam(required = true) String login,
@@ -261,17 +326,29 @@ public class AnnuaireController {
 		return new ModelAndView("connection", model);
 	}
 
+	/**
+	 * Fonction permettant de mapper vers logout
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:connection.htm";
 	}
 
+	/**
+	 * Fonction permettant de mapper vers login_forgot
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/login_forgot")
 	public ModelAndView login_forgot() {
 		return new ModelAndView("login_forgot");
 	}
 
+	/**
+	 * Fonction permettant de mapper vers generate_login
+	 * @return ModelAndView
+	 */
 	@RequestMapping(value = "/generate_login")
 	public ModelAndView generate_login(
 			@RequestParam(required = true) String login,

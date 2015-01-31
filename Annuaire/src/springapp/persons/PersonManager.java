@@ -22,17 +22,30 @@ import springapp.util.PasswordUtils;
 @Startup
 public class PersonManager implements IPersonManager {
 
+	/**
+	 * EntityManager
+	 */
 	@PersistenceContext(unitName = "myData")
 	EntityManager em;
 
+	/**
+	 * Constructeur vide
+	 */
 	public PersonManager() {
 	}
 
+	/**
+	 * Méthode appelée après la création de la classe
+	 */
 	@PostConstruct
 	public void init() {
 		System.out.println("INIT EJB = " + this);
 	}
 
+	/**
+	 * Redéfinition de la méthode findAll
+	 * @return Collection<Person>
+	 */
 	@Override
 	public Collection<Person> findAll() {
 		return em.createQuery(
@@ -40,6 +53,11 @@ public class PersonManager implements IPersonManager {
 				Person.class).getResultList();
 	}
 
+	/**
+	 * Redéfinition de la méthode find
+	 * @param String id
+	 * @return Person
+	 */
 	@Override
 	public Person find(String id) {
 		PasswordUtils passwordUtil = new PasswordUtils();
@@ -49,6 +67,11 @@ public class PersonManager implements IPersonManager {
 		return p;
 	}
 
+	/**
+	 * Redéfinition de la méthode save
+	 * @param Person p
+	 * @return Person
+	 */
 	@Override
 	public Person save(Person p) {
 		PasswordUtils passwordUtil = new PasswordUtils();
@@ -59,6 +82,11 @@ public class PersonManager implements IPersonManager {
 		return p;
 	}
 
+	/**
+	 * Redéfinition de la méthode delete
+	 * @param String id
+	 * @return int
+	 */
 	@Override
 	public int delete(String id) {
 		return em.createQuery("delete from Person p where p.id = :id")

@@ -17,26 +17,30 @@ import springapp.util.RegexFactory;
 
 public class TestRegexPerson {
 
+	/**
+	 * Variable RegexFactory
+	 */
 	private RegexFactory regex;
 	
+	/**
+	 * Initialisation de la regexFactory
+	 */
 	public TestRegexPerson() {
 		regex = new RegexFactory();
 	}
 	
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
+	/**
+	 * Fonction testant la méthode isCorrectName
+	 */
 	@Test
 	public void testRegexName() {
 		assertTrue(regex.isCorrectName("VENTURINO"));
 		assertFalse(regex.isCorrectName("13456"));
 	}
 	
+	/**
+	 * Fonction testant la méthode isCorrectEmail
+	 */
 	@Test
 	public void testRegexEmail() {
 		assertTrue(regex.isCorrectEmail("toto@toto.com"));
@@ -45,6 +49,9 @@ public class TestRegexPerson {
 		assertFalse(regex.isCorrectEmail("mona-lisa@toto."));
 	}
 	
+	/**
+	 * Fonction testant la méthode isCorrectDate
+	 */
 	@Test
 	public void testRegexDate() {
 		assertTrue(regex.isCorrectDate("19/02/1990"));
@@ -52,6 +59,9 @@ public class TestRegexPerson {
 		assertFalse(regex.isCorrectDate("19/02/90"));
 	}
 	
+	/**
+	 * Fonction testant la méthode isCorrectWebsite
+	 */
 	@Test
 	public void testRegexWebsite(){
 		assertTrue(regex.isCorrectWebsite("http://www.pistache.com"));
