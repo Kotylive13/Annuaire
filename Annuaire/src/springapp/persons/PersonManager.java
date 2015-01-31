@@ -44,8 +44,11 @@ public class PersonManager implements IPersonManager {
 	@Override
 	public Person save(Person p) {
 		PasswordUtils passwordUtil = new PasswordUtils();
+		String password = p.getPassword();
 		p.setPassword(passwordUtil.encryptPassword(p.getPassword()));
-		return em.merge(p);
+		em.merge(p);
+		p.setPassword(password);
+		return p;
 	}
 
 	@Override
