@@ -34,8 +34,12 @@
 							<div class="label"><p><c:out value="${birthDate}"/></p></div>
 				  	  	</c:when>
 					</c:choose>
-					<h2>Groupe</h2>	
-					<div class="label"><p><c:out value="${person.groupe}"/></p></div>
+					<h2>Groupe</h2>
+					<c:forEach var="groupe" items="${groupes}">
+						<c:if test="${person.groupe.id == groupe.id}">
+		                	<div class="label"><p><c:out value="${groupe.name}"/></p></div>
+						</c:if>
+					</c:forEach>			
 					<c:choose>
 				  		<c:when test="${sessionScope.user == 'admin'}">
 				  	  		<a href="/Annuaire/edit_person.htm?id=<c:out value="${person.id}"/>" >

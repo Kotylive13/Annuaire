@@ -20,7 +20,7 @@
 			</div>
 			<c:choose>
 		  		<c:when test="${not empty groupe.persons}">
-		  	  		<ul class="ul_without_bottom">
+		  	  		<ul>
 						<c:forEach var="person" items="${groupe.persons}">
 							<li><a
 								href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out
@@ -35,7 +35,7 @@
 		  	  	</c:otherwise>
 			</c:choose>
 			<c:if test="${sessionScope.user == 'admin'}">
-				<div class="list">
+				<div class="list_without_top">
 					<a
 						href="/Annuaire/edit_groupe.htm?id=<c:out value="${groupe.id}"/>">
 						<button class="editButton">Editer</button>

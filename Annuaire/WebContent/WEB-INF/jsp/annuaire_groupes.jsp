@@ -22,7 +22,7 @@
 			  		<c:when test="${not empty groupes}">     
 						<ul>
 							<c:forEach var="groupe" items="${groupes}">
-							<li><a href="/Annuaire/detail_groupe.htm?id=<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></a></li>
+								<li><a href="/Annuaire/detail_groupe.htm?id=<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></a></li>
 							</c:forEach>
 				        </ul>
 					</c:when>

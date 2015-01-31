@@ -43,7 +43,10 @@ public class AnnuaireController {
     
     @RequestMapping(value = "/detail_person")
     public ModelAndView detail_persons(@RequestParam(required = true) String id) {
-        return new ModelAndView("detail_person", "person", personManager.find(id));
+    	Map<String, Object> model = new HashMap<String, Object>();
+    	model.put("person", personManager.find(id));
+    	model.put("groupes", groupeManager.findAll());
+        return new ModelAndView("detail_person", model);
     }
     
     @RequestMapping(value = "/edit_person")
@@ -126,21 +129,8 @@ public class AnnuaireController {
         return new ModelAndView("edit_groupe");
     }
     
-    //Avant modification
-    /*@RequestMapping(value = "/detail_groupe")
-    public ModelAndView detail_groupe(@RequestParam(required = true) String id) {
-        return new ModelAndView("detail_groupe", "groupe", groupeManager.find(id));
-    }*/
-    
     @RequestMapping(value = "/detail_groupe")
     public ModelAndView detail_groupe(@RequestParam(required = true) String id) {
-    	
-    	Groupe g = groupeManager.find(id);
-    	Set<Person> persons = g.getPersons();
-    	for(Person person : persons){
-    		System.out.println("-----------------------" + person.getFirstName());
-    	}
-    	
         return new ModelAndView("detail_groupe", "groupe", groupeManager.find(id));
     }
     
