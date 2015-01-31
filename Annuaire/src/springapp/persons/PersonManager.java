@@ -46,7 +46,7 @@ public class PersonManager implements IPersonManager {
 		PasswordUtils passwordUtil = new PasswordUtils();
 		String password = p.getPassword();
 		p.setPassword(passwordUtil.encryptPassword(p.getPassword()));
-		em.merge(p);
+		p = em.merge(p);
 		p.setPassword(password);
 		return p;
 	}
