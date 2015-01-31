@@ -243,7 +243,7 @@ public class AnnuaireController {
 			@RequestParam(required = true) String password, 
 			HttpSession session) {
 		
-		Map<String, String> model = new HashMap<String, String>();
+		Map<String, Object> model = new HashMap<String, Object>();
 		
 		if (login.equals("admin") && password.equals("admin") 
 			    || personManager.find(login) != null 
@@ -252,6 +252,7 @@ public class AnnuaireController {
 			session.setAttribute("user", login);
 			model.put("type", "success");
 	    	model.put("message", "La connexion a réussie.");
+	    	model.put("persons", personManager.findAll());
 			return new ModelAndView("annuaire_persons", model);
 	    }
 		
