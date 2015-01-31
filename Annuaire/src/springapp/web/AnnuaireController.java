@@ -177,7 +177,7 @@ public class AnnuaireController {
 			@RequestParam(required = true) String password, HttpSession session) {
 		PasswordUtils passwordUtil = new PasswordUtils();
 		if (login.equals("admin") && password.equals("admin")
-				|| personManager.find(login).getPassword().equals(passwordUtil.encryptPassword(password)))
+				|| personManager.find(login).getPassword().equals(password))
 			session.setAttribute("user", login);
 
 		return "redirect:annuaire_persons.htm";
