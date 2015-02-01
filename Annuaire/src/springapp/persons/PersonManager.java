@@ -63,7 +63,7 @@ public class PersonManager implements IPersonManager {
 		PasswordUtils passwordUtil = new PasswordUtils();
 		Person p = em.find(Person.class, id);
 		if (p != null)
-			p.setPassword(passwordUtil.decrypt(p.getPassword()));
+			p.setPassword(passwordUtil.decryptPassword(p.getPassword()));
 		return p;
 	}
 
