@@ -152,10 +152,11 @@ public class AnnuaireController {
 	public ModelAndView savePerson(@RequestParam(required = true) String id,
 			@RequestParam(required = true) String firstName,
 			@RequestParam(required = true) String lastName,
-			@RequestParam(required = true) String mail,
 			@RequestParam(required = true) String website,
+			@RequestParam(required = true) String mail,
 			@RequestParam(required = true) String birthDate,
 			@RequestParam(required = true) String password,
+			@RequestParam(required = true) String passwordConfirm,
 			@RequestParam(required = true) String groupe,
 			HttpSession session) {
 
@@ -164,37 +165,72 @@ public class AnnuaireController {
     	   !session.getAttribute("user").equals(id))
     		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
     	
+    	RegexFactory regex = new RegexFactory();
+    	Map<String, Object> model = new HashMap<String, Object>();
+    	model.put("firstName", firstName);
+    	model.put("lastName", lastName);
+    	model.put("mail", mail);
+    	model.put("website", website);
+    	model.put("birthDate", birthDate);
+    	model.put("password", password);
+    	model.put("passwordConfirm", passwordConfirm);
+    	model.put("groupes", groupeManager.findAll());
+    	
 		Person p;
-		RegexFactory regex = new RegexFactory();
 		
 		if (id == "")
 			p = new Person();
 		else
 			p = personManager.find(id);
-
-		if (regex.isCorrectName(firstName)) {
-			p.setFirstName(firstName);
+		
+		if (!regex.isCorrectName(firstName)) {
+			model.put("type", "error");
+        	model.put("message", "Le prénom n'est pas valable.");
+    		return new ModelAndView("edit_person", model);
 		}
-		if (regex.isCorrectName(lastName)) {
-			p.setLastName(lastName);
+		if (!regex.isCorrectName(lastName)) {
+			model.put("type", "error");
+        	model.put("message", "Le nom n'est pas valable.");
+    		return new ModelAndView("edit_person", model);
 		}
-		if (regex.isCorrectEmail(mail)) {
-			p.setMail(mail);
-		}
-		if (regex.isCorrectWebsite(website)) {
-			p.setWebsite(website);
-		}
-		if (regex.isCorrectDate(birthDate)) {
-			try {
-				p.setBirthDate(formatter.parse(birthDate));
-			} catch (ParseException e) {
-				e.printStackTrace();
+		if (!website.equals("")){
+			if (!regex.isCorrectWebsite(website)) {
+				model.put("type", "error");
+	        	model.put("message", "Le site web n'est pas valable.");
+	    		return new ModelAndView("edit_person", model);
 			}
 		}
-		if (regex.isCorrectPassword(password)) {
-			p.setPassword(password);
+		if (!regex.isCorrectEmail(mail)) {
+			model.put("type", "error");
+        	model.put("message", "L'adresse mail n'est pas valable.");
+    		return new ModelAndView("edit_person", model);
+		}
+		if (!regex.isCorrectDate(birthDate)) {
+			model.put("type", "error");
+        	model.put("message", "La date de naissance n'est pas valable.");
+    		return new ModelAndView("edit_person", model);
+		}
+		if (!regex.isCorrectPassword(password)) {
+			model.put("type", "error");
+        	model.put("message", "Le mot de passe n'est pas valable.");
+    		return new ModelAndView("edit_person", model);
+		}
+		if (!passwordConfirm.equals(password)) {
+			model.put("type", "error");
+        	model.put("message", "Les deux mots de passe ne sont pas identiques.");
+    		return new ModelAndView("edit_person", model);
 		}
 		
+		p.setFirstName(firstName);
+		p.setLastName(lastName);
+		p.setMail(mail);
+		p.setWebsite(website);
+		try {
+			p.setBirthDate(formatter.parse(birthDate));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		p.setPassword(password);
 		p.setGroupe(groupeManager.find(groupe));
 		
 		p = personManager.save(p);
@@ -207,7 +243,12 @@ public class AnnuaireController {
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
-		return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
+		model.clear();
+		model.put("type", "success");
+    	model.put("message", "La personne a été ajoutée avec succès.");
+    	model.put("groupes", groupeManager.findAll());
+		
+		return new ModelAndView("annuaire_persons", model);
 	}
 	
 	/**
@@ -295,9 +336,6 @@ public class AnnuaireController {
     	if (groupeManager.find(id).getPersons().isEmpty()) {
     		groupeManager.delete(id);
     	}
-    	else {
-    		// TODO
-    	}
     	
     	return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
     }
@@ -326,7 +364,7 @@ public class AnnuaireController {
     	
     	if (!regex.isCorrectGroupe(name)) {
         	model.put("type", "error");
-        	model.put("message", "Ce nom de groupe n'est pas valable.");
+        	model.put("message", "Le nom du groupe n'est pas valable.");
         	model.put("name", name);
     		return new ModelAndView("edit_groupe", model);
     	}
@@ -336,7 +374,7 @@ public class AnnuaireController {
         g = groupeManager.save(g);
         model.put("type", "success");
     	model.put("message", "Le groupe a été ajouté avec succès.");
-        return new ModelAndView("edit_groupe", model);
+        return new ModelAndView("annuaire_groupes", model);
     }
     
 	/**
