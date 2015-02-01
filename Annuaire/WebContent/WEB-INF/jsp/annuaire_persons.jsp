@@ -32,9 +32,9 @@
                 </form>
                 
 				<c:choose>
-			  		<c:when test="${not empty persons}">         
+			  		<c:when test="${not empty elements}">         
 						<ul>
-							<c:forEach var="person" items="${persons}">
+							<c:forEach var="person" items="${elements}">
 							<li><a href="/Annuaire/detail_person.htm?id=<c:out value="${person.id}"/>"><c:out value="${person.firstName}"/> <c:out value="${person.lastName}"/></a></li>
 							</c:forEach>
 				        </ul>

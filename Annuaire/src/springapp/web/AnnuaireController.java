@@ -25,7 +25,7 @@ import springapp.groupe.IGroupeManager;
 import springapp.persons.IPersonManager;
 import springapp.persons.Person;
 import springapp.util.Email;
-import springapp.util.Pages;
+import springapp.util.PagesTransformer;
 import springapp.util.PasswordUtils;
 import springapp.util.RegexFactory;
 
@@ -51,16 +51,11 @@ public class AnnuaireController {
 	 */
     @RequestMapping(value = "/annuaire_persons")
     public ModelAndView annuairePersons(@RequestParam(required = false) Integer page) {	
-    	if(page == null) return new ModelAndView("redirect:annuaire_persons.htm?page=1");
-    	    	     	
-    	try {
-    		Pages p = new Pages(page, new ArrayList<Object>(personManager.findAll()));
+    	if(page == null) return new ModelAndView("redirect:annuaire_persons.htm?page=1");  	     	
     	
-    		Map<String, Object> model = new HashMap<String, Object>();
-        	model.put("persons", p.getSubList());
-        	model.put("firstPage", p.getFirstPage());
-        	model.put("lastPage", p.getLastPage());
-            return new ModelAndView("annuaire_persons", model);
+    	try {
+			return new ModelAndView("annuaire_persons", 
+			  PagesTransformer.listToPage(page, new ArrayList<Object>(personManager.findAll())));
     	}
     	catch(Exception e) {
     		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
@@ -74,13 +69,8 @@ public class AnnuaireController {
     	if(page == null) return new ModelAndView("redirect:find_persons.htm?name="+name+"&page=1");
      	
     	try {
-    		Pages p = new Pages(page, new ArrayList<Object>(personManager.findByName(name)));
-    	
-    		Map<String, Object> model = new HashMap<String, Object>();
-        	model.put("persons", p.getSubList());
-        	model.put("firstPage", p.getFirstPage());
-        	model.put("lastPage", p.getLastPage());
-            return new ModelAndView("annuaire_persons", model);
+			return new ModelAndView("annuaire_persons", 
+			  PagesTransformer.listToPage(page, new ArrayList<Object>(personManager.findByName(name))));
     	}
     	catch(Exception e) {
     		return new ModelAndView("redirect:find_persons.htm?name="+name+"&page=1");
@@ -229,13 +219,8 @@ public class AnnuaireController {
     	if(page == null) return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
     	    	     	
     	try {
-    		Pages p = new Pages(page, new ArrayList<Object>(groupeManager.findAll()));
-    	
-    		Map<String, Object> model = new HashMap<String, Object>();
-        	model.put("groupes", p.getSubList());
-        	model.put("firstPage", p.getFirstPage());
-        	model.put("lastPage", p.getLastPage());
-            return new ModelAndView("annuaire_groupes", model);
+			return new ModelAndView("annuaire_groupes", 
+			  PagesTransformer.listToPage(page, new ArrayList<Object>(groupeManager.findAll())));
     	}
     	catch(Exception e) {
     		return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
@@ -249,13 +234,8 @@ public class AnnuaireController {
     	if(page == null) return new ModelAndView("redirect:find_groupes.htm?name="+name+"&page=1");
      	
     	try {
-    		Pages p = new Pages(page, new ArrayList<Object>(groupeManager.findByName(name)));
-    	
-    		Map<String, Object> model = new HashMap<String, Object>();
-        	model.put("groupes", p.getSubList());
-        	model.put("firstPage", p.getFirstPage());
-        	model.put("lastPage", p.getLastPage());
-            return new ModelAndView("annuaire_groupes", model);
+			return new ModelAndView("annuaire_groupes", 
+			  PagesTransformer.listToPage(page, new ArrayList<Object>(groupeManager.findByName(name))));
     	}
     	catch(Exception e) {
     		return new ModelAndView("redirect:find_groupes.htm?name="+name+"&page=1");

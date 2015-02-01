@@ -28,9 +28,9 @@
                 </form>
                 
 				<c:choose>
-			  		<c:when test="${not empty groupes}">     
+			  		<c:when test="${not empty elements}">     
 						<ul>
-							<c:forEach var="groupe" items="${groupes}">
+							<c:forEach var="groupe" items="${elements}">
 								<li><a href="/Annuaire/detail_groupe.htm?id=<c:out value="${groupe.id}"/>"><c:out value="${groupe.name}"/></a></li>
 							</c:forEach>
 				        </ul>
