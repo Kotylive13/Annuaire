@@ -22,28 +22,28 @@ public class Email {
 	 * Expéditeur
 	 */
 	// Sender's email ID needs to be mentioned
-	private final String from;
+	private final String FROM;
 	
 	/**
 	 * Nom de l'expéditeur
 	 */
-	private final String username;
+	private final String USERNAME;
 	
 	/**
 	 * Mot de passe de l'expéditeur
 	 */
-	private final String password;
+	private final String PASSWORD;
 	
 	/**
 	 * Host smtp de l'adresse mail
 	 */
-	private final String host;
+	private final String HOST;
 	
 	public Email() {
-		from = "annuaire.m2isl@gmail.com";
-		username = "annuaire.m2isl";
-		password = "Annuaire";
-		host = "smtp.gmail.com";
+		FROM = "annuaire.m2isl@gmail.com";
+		USERNAME = "annuaire.m2isl";
+		PASSWORD = "Annuaire";
+		HOST = "smtp.gmail.com";
 	}
 	
 	/**
@@ -57,14 +57,14 @@ public class Email {
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
-		props.put("mail.smtp.host", host);
+		props.put("mail.smtp.host", HOST);
 		props.put("mail.smtp.port", "587");
 
 		// Get the Session object.
 		Session session = Session.getInstance(props,
 				new javax.mail.Authenticator() {
 					protected PasswordAuthentication getPasswordAuthentication() {
-						return new PasswordAuthentication(username, password);
+						return new PasswordAuthentication(USERNAME, PASSWORD);
 					}
 				});
 
@@ -73,7 +73,7 @@ public class Email {
 			Message message = new MimeMessage(session);
 
 			// Set From: header field of the header.
-			message.setFrom(new InternetAddress(from));
+			message.setFrom(new InternetAddress(FROM));
 
 			// Set To: header field of the header.
 			message.setRecipients(Message.RecipientType.TO,

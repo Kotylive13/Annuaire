@@ -405,9 +405,11 @@ public class AnnuaireController {
 			    && personManager.find(login).getPassword().equals(password)) {
 			
 			session.setAttribute("user", login);
-			model.put("type", "success");
-	    	model.put("message", "Bienvenue, vous êtes connecté.");
-	    	return new ModelAndView("redirect:annuaire_persons.htm?page=1", model);
+			
+			ModelAndView modelAndView = annuairePersons(1);
+			modelAndView.getModel().put("type", "success");
+			modelAndView.getModel().put("message", "Bienvenue, vous êtes connecté.");
+			return modelAndView;
 	    }
 		
 		model.put("type", "error");
