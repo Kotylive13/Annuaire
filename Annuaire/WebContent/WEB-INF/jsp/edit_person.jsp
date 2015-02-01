@@ -14,6 +14,11 @@
     </head>
     <body>
         <jsp:include page="menu.jsp" />
+        <c:if test="${not empty type}">
+	        <div class="popup">
+	            <p class="<c:out value="${type}"/>"><c:out value="${message}"/></p>
+	        </div>
+		</c:if>
         <div class="main">
             <div class="column">
             	<c:choose>
