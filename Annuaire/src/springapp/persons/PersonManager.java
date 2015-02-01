@@ -88,6 +88,13 @@ public class PersonManager implements IPersonManager {
 		PasswordUtils passwordUtil = new PasswordUtils();
 		String password = p.getPassword();
 		p.setPassword(passwordUtil.encryptPassword(p.getPassword()));
+		
+		String firstName = p.getFirstName();
+		
+		p.setFirstName(firstName.substring(0, 1).toUpperCase() + 
+				firstName.substring(1, firstName.length()).toLowerCase());
+		p.setLastName(p.getLastName().toUpperCase());
+		
 		p = em.merge(p);
 		p.setPassword(password);
 		return p;

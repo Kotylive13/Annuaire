@@ -165,6 +165,8 @@ public class AnnuaireController {
     	   !session.getAttribute("user").equals(id))
     		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
     	
+    	mail = mail.toLowerCase();
+    	
     	RegexFactory regex = new RegexFactory();
     	Map<String, Object> model = new HashMap<String, Object>();
     	model.put("firstName", firstName);
