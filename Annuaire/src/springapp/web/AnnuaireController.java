@@ -136,7 +136,11 @@ public class AnnuaireController {
     		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
     		
     	personManager.delete(id);
-    	return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	
+    	ModelAndView modelAndView = annuairePersons(1);
+		modelAndView.getModel().put("type", "success");
+		modelAndView.getModel().put("message", "La personne a été supprimée avec succès.");
+		return modelAndView;
     }
     
     /**
@@ -335,9 +339,16 @@ public class AnnuaireController {
     	
     	if (groupeManager.find(id).getPersons().isEmpty()) {
     		groupeManager.delete(id);
+    		ModelAndView modelAndView = annuaireGroupes(1);
+    		modelAndView.getModel().put("type", "success");
+    		modelAndView.getModel().put("message", "Le groupe a été supprimé avec succès.");
+    		return modelAndView;
+    	} else {    	
+	    	ModelAndView modelAndView = annuaireGroupes(1);
+			modelAndView.getModel().put("type", "error");
+			modelAndView.getModel().put("message", "Le groupe ne peut pas être supprimé.");
+			return modelAndView;
     	}
-    	
-    	return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
     }
     
 	/**
