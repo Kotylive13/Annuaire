@@ -83,6 +83,11 @@ public class GroupeManager implements IGroupeManager {
 	}
 	
 	@Override
+	/**
+	 * Redéfinition de la méthode findByName
+	 * @param String name
+	 * @return Collection<Groupe>
+	 */
 	public Collection<Groupe> findByName(String name) {
 		return em.createQuery(
 			"Select g from Groupe g " + 

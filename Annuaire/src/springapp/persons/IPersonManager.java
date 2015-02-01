@@ -23,6 +23,11 @@ public interface IPersonManager {
 	 */
 	Person find(String id);
 
+	/**
+	 * Fonction cherchant un ensemble de personnes à partir de leur nom ou prénom
+	 * @param name
+	 * @return
+	 */
 	Collection<Person> findByName(String name);
 	
 	/**
@@ -33,7 +38,7 @@ public interface IPersonManager {
 	Person save(Person p);
 	
 	/**
-	 * suppression d'une personne
+	 * Suppression d'une personne
 	 * @param String id
 	 * @return int
 	 */

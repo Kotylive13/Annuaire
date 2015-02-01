@@ -1,3 +1,9 @@
+/**
+ * Classe permettant de paginer les listes
+ * @author Jonathan, Philippe, Marcel
+ * @version 1.0
+ */
+
 package springapp.util;
 
 import java.util.HashMap;
@@ -5,8 +11,18 @@ import java.util.List;
 import java.util.Map;
 
 public class PagesTransformer {
+	/**
+	 * Nombre maximum par page
+	 */
 	final static int BY_PAGE = 10;
 
+	/**
+	 * Fonction permettant de paginer les listes
+	 * @param currentPage
+	 * @param allElements
+	 * @return Map<String, Object>
+	 * @throws Exception
+	 */
 	public static Map<String, Object> listToPage(int currentPage,
 			List<Object> allElements) throws Exception {
 		

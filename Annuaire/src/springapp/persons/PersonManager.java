@@ -67,12 +67,13 @@ public class PersonManager implements IPersonManager {
 		return p;
 	}
 
-	/**
-	 * Redéfinition de la méthode save
-	 * @param Person p
-	 * @return Person
-	 */
+	
 	@Override
+	/**
+	 * Redéfinition de la méthode findByName
+	 * @param String name
+	 * @return Collection<Person>
+	 */
 	public Collection<Person> findByName(String name) {
 		return em.createQuery(
 			"Select p from Person p " + 
@@ -83,7 +84,13 @@ public class PersonManager implements IPersonManager {
 			.setParameter("lastName", "%" + name + "%").getResultList();
 	}
 
+	
 	@Override
+	/**
+	 * Redéfinition de la méthode save
+	 * @param Person p
+	 * @return Person
+	 */
 	public Person save(Person p) {
 		PasswordUtils passwordUtil = new PasswordUtils();
 		String password = p.getPassword();

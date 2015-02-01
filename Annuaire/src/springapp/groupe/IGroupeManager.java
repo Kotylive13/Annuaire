@@ -37,5 +37,10 @@ public interface IGroupeManager {
 	 */
 	int delete(String id);
 
+	/**
+	 * Fonction cherchant un ensemble de groupe à partir de son nom
+	 * @param name
+	 * @return
+	 */
 	Collection<Groupe> findByName(String name);
 }
