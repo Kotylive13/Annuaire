@@ -23,7 +23,7 @@
             <div class="column">
                 <h1>Edition d'un groupe</h1>
 				<div class="head">
-					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
+					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
                 <c:if test="${not empty groupe}">
                 	<c:set var="id" value="${groupe.id}"/>

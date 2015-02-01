@@ -20,7 +20,7 @@
     		<div class="column">
 				<h1>Annuaire de groupes</h1>
 				<div class="head">
-					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
+					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
 				
 				<form id="findGroupes" action="/Annuaire/find_groupes.htm" method="get">

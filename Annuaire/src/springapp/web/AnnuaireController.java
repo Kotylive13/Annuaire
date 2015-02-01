@@ -245,12 +245,10 @@ public class AnnuaireController {
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
-		model.clear();
-		model.put("type", "success");
-    	model.put("message", "La personne a été ajoutée avec succès.");
-    	model.put("groupes", groupeManager.findAll());
-		
-		return new ModelAndView("annuaire_persons", model);
+		ModelAndView modelAndView = annuairePersons(1);
+		modelAndView.getModel().put("type", "success");
+		modelAndView.getModel().put("message", "La personne a été ajoutée avec succès.");
+		return modelAndView;
 	}
 	
 	/**
@@ -374,9 +372,11 @@ public class AnnuaireController {
     	g.setName(name);
     	
         g = groupeManager.save(g);
-        model.put("type", "success");
-    	model.put("message", "Le groupe a été ajouté avec succès.");
-        return new ModelAndView("annuaire_groupes", model);
+        
+        ModelAndView modelAndView = annuaireGroupes(1);
+		modelAndView.getModel().put("type", "success");
+		modelAndView.getModel().put("message", "Le groupe a été ajouté avec succès.");
+		return modelAndView;
     }
     
 	/**

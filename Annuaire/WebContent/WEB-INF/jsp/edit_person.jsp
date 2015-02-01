@@ -30,7 +30,7 @@
                 </c:otherwise>
                 </c:choose>
 				<div class="head">
-					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
+					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
                 
                 <c:if test="${not empty person}">

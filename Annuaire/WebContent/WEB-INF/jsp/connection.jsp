@@ -25,7 +25,7 @@
 			<div class="column">
 				<h1>Bienvenue</h1>
 				<div class="head">
-					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
+					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
 				<form id="loginForm" method="post" action="/Annuaire/login.htm">
 					<input id="login" name="login" type="text" value="LOGIN" onfocus="this.value = '';"/>

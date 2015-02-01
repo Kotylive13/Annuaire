@@ -74,7 +74,7 @@ public class RegexFactory {
 	 * @return boolean
 	 */
 	public boolean isCorrectGroupe(String name) {
-		expression = "^[a-zA-Z0-9\\s]+";
+		expression = "^[a-zA-Z0-9[-_.]\\s]+";
 		return name.matches(expression);
 	}
 }

@@ -20,7 +20,7 @@
     		<div class="column">
 				<h1>Annuaire de personnes</h1>
 				<div class="head">
-					<a href="/Annuaire/"><img src="user.png" alt="Accueil"/></a>
+					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
 				
 				<form id="findPersons" action="/Annuaire/find_persons.htm" method="get">
@@ -43,20 +43,28 @@
 			  	  		<h2 class="center">Aucune personne présente dans l'annuaire.</h2>
 			  	  	</c:otherwise>
 				</c:choose>
-				
-				<p>
-				<c:forEach var="page" begin="${firstPage}" end="${lastPage}">
-				
-					<c:choose>
-				  		<c:when test="${page eq currentPage}">         
-							[<c:out value="${page}"/>]
-						</c:when>
-				  		<c:otherwise>
-				  	  		<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${page}"/>"><c:out value="${page}"/></a>
-				  	  	</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				</p>
+				<div class="container">
+					<div class="gauche">
+						<a href="/Annuaire/annuaire_persons.htm?page=1"><img src="arrow_left_transp.png" alt="Première page"/></a>
+					</div>
+					<div class="centre">
+						<p>
+								<c:forEach var="page" begin="${firstPage}" end="${lastPage}">
+									<c:choose>
+								  		<c:when test="${page eq currentPage}">         
+											[<c:out value="${page}"/>]
+										</c:when>
+								  		<c:otherwise>
+								  	  		<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${page}"/>"><c:out value="${page}"/></a>
+								  	  	</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</p>
+					</div>
+					<div class="droite">
+						<a href="/Annuaire/annuaire_persons.htm?page=1"><img src="arrow_left_transp.png" alt="Première page"/></a>
+					</div>
+				</div>
 		    </div>
 		</div>
 	</body>

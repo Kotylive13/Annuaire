@@ -16,7 +16,7 @@
 		<div class="column">
 			<h1>${groupe.name}</h1>
 			<div class="head">
-				<a href="/Annuaire/"><img src="user.png" alt="Accueil" /></a>
+				<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil" /></a>
 			</div>
 			<c:choose>
 		  		<c:when test="${not empty groupe.persons}">
