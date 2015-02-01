@@ -43,7 +43,7 @@ public class PagesTransformer {
 		
 		int firstElement = BY_PAGE * currentPage;
     	int lastElement = currentPage * BY_PAGE + BY_PAGE > allElements.size() ? 
-    					allElements.size() : currentPage * BY_PAGE + BY_PAGE -1;
+    					allElements.size() : currentPage * BY_PAGE + BY_PAGE;
     	
     	int firstPage = currentPage-1 <= 0 ? 1 : currentPage-1;
     	
