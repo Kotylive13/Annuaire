@@ -15,6 +15,7 @@ public class PagesTransformer {
 		if(allElements.size() == 0) {
 			model.put("firstPage", 1);
 	    	model.put("lastPage", 1);
+	    	model.put("currentPage", 1);
 			return model;
 		}
 		
@@ -36,6 +37,7 @@ public class PagesTransformer {
     	model.put("elements", allElements.subList(firstElement, lastElement));
     	model.put("firstPage", firstPage);
     	model.put("lastPage", lastPage);
+    	model.put("currentPage", ++currentPage);
     	
     	return model;
 	}	

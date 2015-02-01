@@ -44,7 +44,7 @@
 				<c:forEach var="page" begin="${firstPage}" end="${lastPage}">
 				
 					<c:choose>
-				  		<c:when test="${page eq param.page}">         
+				  		<c:when test="${page eq currentPage}">         
 							[<c:out value="${page}"/>]
 						</c:when>
 				  		<c:otherwise>

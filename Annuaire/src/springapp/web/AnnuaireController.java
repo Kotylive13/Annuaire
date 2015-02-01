@@ -87,7 +87,7 @@ public class AnnuaireController {
     	if(session.getAttribute("user") == null ||
     	   !session.getAttribute("user").equals("admin"))
     		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
-    	
+    	   	
         return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
     }
     
