@@ -83,7 +83,7 @@ public class PasswordUtils {
 	 * @param String password
 	 * @return String
 	 */
-	public String decrypt(String password) {
+	public String decryptPassword(String password) {
 		String aCrypter = "";
 		for (int i = 0; i < password.length(); i++) {
 			int c = password.charAt(i) ^ 48;
