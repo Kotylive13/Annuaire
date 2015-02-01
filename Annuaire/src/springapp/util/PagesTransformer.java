@@ -14,8 +14,9 @@ public class PagesTransformer {
 		
 		if(allElements.size() == 0) {
 			model.put("firstPage", 1);
-	    	model.put("lastPage", 1);
 	    	model.put("currentPage", 1);
+	    	model.put("lastPage", 1);
+	    	model.put("veryLastPage", 1);
 			return model;
 		}
 		
@@ -29,15 +30,18 @@ public class PagesTransformer {
     					allElements.size() : currentPage * BY_PAGE + BY_PAGE -1;
     	
     	int firstPage = currentPage-1 <= 0 ? 1 : currentPage-1;
-    	int lastPage = firstPage+4 < (allElements.size()-1)/10+1 ? 
-    			firstPage+4 : (allElements.size()-1)/10+1;
+    	
+    	int veryLastPage = (allElements.size()-1)/10+1;
+    	
+    	int lastPage = firstPage+4 < veryLastPage ? firstPage+4 : veryLastPage;
     	
     	if(lastPage > 4 && lastPage - 4 < firstPage) firstPage =  lastPage-4;
     	
     	model.put("elements", allElements.subList(firstElement, lastElement));
     	model.put("firstPage", firstPage);
-    	model.put("lastPage", lastPage);
     	model.put("currentPage", ++currentPage);
+    	model.put("lastPage", lastPage);
+    	model.put("veryLastPage", veryLastPage);
     	
     	return model;
 	}	
