@@ -67,4 +67,14 @@ public class RegexFactory {
 		expression = "(?=.*[a-z])*(?=.*d)*(?=.*[@#$%])*(?=.*[A-Z])*.{6,16}";
 		return password.matches(expression);
 	}
+	
+	/**
+	 * Méthode permettant de vérifier le nom d'un groupe
+	 * @param String name
+	 * @return boolean
+	 */
+	public boolean isCorrectGroupe(String name) {
+		expression = "^[a-zA-Z0-9\\s]+";
+		return name.matches(expression);
+	}
 }

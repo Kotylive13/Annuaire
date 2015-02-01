@@ -324,7 +324,7 @@ public class AnnuaireController {
     		g = new Groupe();
     	else g = groupeManager.find(id);
     	
-    	if (!regex.isCorrectName(name)) {
+    	if (!regex.isCorrectGroupe(name)) {
         	model.put("type", "error");
         	model.put("message", "Ce nom de groupe n'est pas valable.");
         	model.put("name", name);
@@ -364,8 +364,10 @@ public class AnnuaireController {
 			    || personManager.find(login) != null 
 			    && personManager.find(login).getPassword().equals(password)) {
 			
-			session.setAttribute("user", login);	    	
-	    	return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
+			session.setAttribute("user", login);
+			model.put("type", "success");
+	    	model.put("message", "Bienvenue, vous êtes connecté.");
+	    	return new ModelAndView("redirect:annuaire_persons.htm?page=1", model);
 	    }
 		
 		model.put("type", "error");
@@ -402,10 +404,12 @@ public class AnnuaireController {
     		@RequestParam(required = true) String mail
 			) throws ParseException {
 
-		Person p = personManager.find(login);
 		Map<String, String> model = new HashMap<String, String>();
 		
-		if (mail.equals(p.getMail())) {
+		if (personManager.find(login) != null 
+			    && personManager.find(login).getMail().equals(mail)) {
+			
+			Person p = personManager.find(login);
 			
 			PasswordUtils passwordUtils = new PasswordUtils();
 			p.setPassword(passwordUtils.generatePassword());
@@ -427,7 +431,7 @@ public class AnnuaireController {
 			return new ModelAndView("connection", model);
 		} else {
 			model.put("type", "error");
-	    	model.put("message", "Cette adresse e-mail est introuvable dans l'annuaire.");
+	    	model.put("message", "Le login ou l'adresse e-mail est incorrect.");
 			return new ModelAndView("login_forgot", model);
 		}
 	}

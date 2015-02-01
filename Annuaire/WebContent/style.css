@@ -231,11 +231,11 @@ select {
 	-webkit-appearance:none;
 }
 
-.main li a {
+.main li a, .main p a {
 	color:#665d51 ;
 }
 
-.main li a:hover {
+.main li a:hover, .main p a:hover {
 	color:#9bbac3;
 }
 

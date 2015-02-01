@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="/WEB-INF/jsp/include.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -15,6 +16,11 @@
 </head>
 	<body>
 		<jsp:include page="menu.jsp" />
+		<c:if test="${not empty type}">
+	        <div class="popup">
+	            <p class="<c:out value="${type}"/>"><c:out value="${message}"/></p>
+	        </div>
+		</c:if>
 		<div class="main">
 			<div class="column">
 				<h1>Mot de passe oublié</h1>
