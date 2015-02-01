@@ -43,20 +43,36 @@
 			  	  		<h2 class="center">Aucun groupe présent dans l'annuaire.</h2>
 			  	  	</c:otherwise>
 				</c:choose>
-				
-				<p>
-				<c:forEach var="page" begin="${firstPage}" end="${lastPage}">
-				
-					<c:choose>
-				  		<c:when test="${page eq currentPage}">         
-							[<c:out value="${page}"/>]
-						</c:when>
-				  		<c:otherwise>
-				  	  		<a href="/Annuaire/annuaire_groupes.htm?page=<c:out value="${page}"/>"><c:out value="${page}"/></a>
-				  	  	</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				</p>
+				<div class="container">
+					<div class="left">
+						<c:if test="${currentPage - 1 > 0}">
+							<a class="arrow" href="/Annuaire/annuaire_groupes.htm?page=<c:out value="${firstPage}"/>">&#8249; </a>
+							<a class="arrow" href="/Annuaire/annuaire_groupes.htm?page=<c:out value="${currentPage - 1}"/>"> &#171;</a>
+						</c:if>						
+					</div>
+					<div class="middle">
+							<p class="page">
+								<c:forEach var="page" begin="${firstPage}" end="${lastPage}">
+								
+									<c:choose>
+								  		<c:when test="${page eq currentPage}">         
+											[<c:out value="${page}"/>]
+										</c:when>
+								  		<c:otherwise>
+								  	  		<a href="/Annuaire/annuaire_groupes.htm?page=<c:out value="${page}"/>"><c:out value="${page}"/></a>
+								  	  	</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							</p>
+					</div>
+					<div class="right">
+						<c:if test="${currentPage + 1 <= veryLastPage}">
+							<a class="arrow" href="/Annuaire/annuaire_groupes.htm?page=<c:out value="${currentPage + 1}"/>">&#187; </a>
+							<a class="arrow" href="/Annuaire/annuaire_groupes.htm?page=<c:out value="${veryLastPage}"/>"> &#8250;</a>
+						</c:if>
+					</div>
+					<div class="espace"></div>
+				</div>
 		    </div>
 		</div>
 	</body>

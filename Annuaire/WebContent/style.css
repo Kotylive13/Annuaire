@@ -354,29 +354,30 @@ div[class="error"] {
   	vertical-align: middle;
 }
 
-.arrow_img {
-	height:30px;
-	widht:30px;
-	margin:0;padding:0 ;
+.arrow {
+	height:25px;
+  	line-height:25px;
+	font-size: 40px;
+	color:#665d51;
 }
 
-.arrow_img:hover{
-	-webkit-transform:rotate(540deg); 
-  	-moz-transform:rotate(360deg);
-  	-o-transform:rotate(360deg); 
-  	-ms-transform:rotate(360deg); 
-  	transform:rotate(360deg);
-  	transition:0.8s;
-	-webkit-transition:0.8s;
-	-moz-transition:0.8s;
-	-o-transition:0.8s;
-	-ms-transition:0.8s;
+.arrow:hover {
+	color: #cb694d;
 }
 
 p[class="page"] {
 	height:30px;
   	line-height:30px;
   	color:#665d51;
+  	font-size: 20px;
+}
+
+p[class="page"] a:hover {
+  	color:#cb694d ;
+}
+
+.espace {
+	padding-bottom:9%;
 }
 
 /*-----start-responsive-design------*/

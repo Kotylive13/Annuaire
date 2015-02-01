@@ -43,8 +43,8 @@
 				<div class="container">
 					<div class="left">
 						<c:if test="${currentPage - 1 > 0}">
-							<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${firstPage}"/>"><img class="arrow_img" src="double_arrow_left.png" alt="Première page"/></a>
-							<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage - 1}"/>"><img class="arrow_img" src="1422840802_15-64.png" alt="Première page"/></a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${firstPage}"/>">&#8249; </a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage - 1}"/>"> &#171;</a>
 						</c:if>						
 					</div>
 					<div class="middle">
@@ -63,10 +63,11 @@
 					</div>
 					<div class="right">
 						<c:if test="${currentPage + 1 <= veryLastPage}">
-							<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage + 1}"/>"><img class="arrow_img" src="1422840926_20-64.png" alt="Première page"/></a>
-							<a href="/Annuaire/annuaire_persons.htm?page=<c:out value="${veryLastPage}"/>"><img class="arrow_img" src="double_arrow_right.png" alt="Première page"/></a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage + 1}"/>">&#187; </a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${veryLastPage}"/>"> &#8250;</a>
 						</c:if>
 					</div>
+					<div class="espace"></div>
 				</div>
 		    </div>
 		</div>
