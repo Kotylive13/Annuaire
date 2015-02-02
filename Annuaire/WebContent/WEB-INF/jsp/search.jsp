@@ -2,8 +2,8 @@
 <div class="container">
 	<div class="search_left">
 		<c:choose>
-			<c:when test="${not empty name}">
-	        	<input name="name" id="label_search" type="text" value="<c:out value="${name}"/>" />
+			<c:when test="${not empty param.name}">
+	        	<input name="name" id="label_search" type="text" value="<c:out value="${param.name}"/>" />
 	        </c:when>
 			<c:otherwise>
 				<input name="name" id="label_search" type="text" value="RECHERCHE" onfocus="this.value = '';" />
