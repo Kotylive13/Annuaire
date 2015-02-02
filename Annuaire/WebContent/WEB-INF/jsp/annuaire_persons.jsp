@@ -22,11 +22,7 @@
 					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
 				<form id="findPersons" action="/Annuaire/find_persons.htm" method="get">
-                	<h2>Recherche</h2>
-                    <input name="name" type="text" value="<c:out value="${name}"/>" />
-                    <div class="submit">
-                        <input type="submit" value="Valider" />
-                    </div>
+                	<jsp:include page="search.jsp" />
                 </form>
 				<c:choose>
 			  		<c:when test="${not empty elements}">         
@@ -43,8 +39,8 @@
 				<div class="container">
 					<div class="left">
 						<c:if test="${currentPage - 1 > 0}">
-							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${firstPage}"/>">&#8249; </a>
-							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage - 1}"/>"> &#171;</a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${firstPage}"/>">&#171; </a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage - 1}"/>"> &#8249;</a>
 						</c:if>						
 					</div>
 					<div class="middle">
@@ -63,8 +59,8 @@
 					</div>
 					<div class="right">
 						<c:if test="${currentPage + 1 <= veryLastPage}">
-							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage + 1}"/>">&#187; </a>
-							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${veryLastPage}"/>"> &#8250;</a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${currentPage + 1}"/>">&#8250; </a>
+							<a class="arrow" href="/Annuaire/annuaire_persons.htm?page=<c:out value="${veryLastPage}"/>"> &#187;</a>
 						</c:if>
 					</div>
 					<div class="espace"></div>

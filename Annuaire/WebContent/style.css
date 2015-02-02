@@ -109,6 +109,18 @@ img[class="anim"]:hover{
 	-ms-transition:0.8s;
 }
 
+.img_search {
+	height:40px;
+	width:40px;
+}
+
+#label_search {
+	background-color:#e1e5e5 ;
+	border-radius: 30px;
+	border:2px solid #4d9099  ;
+	color:#4d9099 ;
+}
+
 .popup {
 	position: absolute;
    	margin-left: auto;
@@ -335,6 +347,15 @@ div[class="error"] {
   	vertical-align: middle;
 }
 
+.search_left { 
+  	float:left ;
+  	width:80% ;
+  	height:30px;
+  	background-color:#d1c5a4;
+  	margin:0 ; padding:0;
+  	vertical-align: middle;
+}
+
 .middle {
   	float:left;
   	width:20%;
@@ -347,6 +368,16 @@ div[class="error"] {
 .right {
   	float:left ;
   	width:40% ;
+  	height:30px;
+  	margin:0;
+  	background-color:#d1c5a4 ;
+  	text-align:center;
+  	vertical-align: middle;
+}
+
+.search_right {
+  	float:left ;
+  	width:20% ;
   	height:30px;
   	margin:0;
   	background-color:#d1c5a4 ;
