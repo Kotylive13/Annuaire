@@ -1,8 +1,8 @@
-<%@ include file="/WEB-INF/jsp/include.jsp" %>
 <%@ page pageEncoding="UTF-8" %>
-<?xml version="1.0" encoding="iso-8859-1"?>
+<%@ include file="/WEB-INF/jsp/include.jsp" %>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="en" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
     	<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
         <title>Annuaire de groupes</title>
@@ -21,11 +21,9 @@
 				<div class="head">
 					<a href="/Annuaire/"><img class="anim" src="user.png" alt="Accueil"/></a>
 				</div>
-				
 				<form id="findGroupes" action="/Annuaire/find_groupes.htm" method="get">
 					<jsp:include page="search.jsp" />
                 </form>
-                
 				<c:choose>
 			  		<c:when test="${not empty elements}">
 						<ul>
