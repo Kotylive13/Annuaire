@@ -51,14 +51,18 @@ public class AnnuaireController {
 	 */
     @RequestMapping(value = "/annuaire_persons")
     public ModelAndView annuairePersons(@RequestParam(required = false) Integer page) {	
-    	if(page == null) return new ModelAndView("redirect:annuaire_persons.htm?page=1");  	     	
+		
+    	if(page == null) { return new ModelAndView("redirect:annuaire_persons.htm?page=1"); }
     	
     	try {
 			return new ModelAndView("annuaire_persons", 
 			  PagesTransformer.listToPage(page, new ArrayList<Object>(personManager.findAll())));
     	}
     	catch(Exception e) {
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    		ModelAndView modelAndView = annuairePersons(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible."); 
+    		return modelAndView;
     	}    	
     }
     
@@ -66,7 +70,7 @@ public class AnnuaireController {
 	public ModelAndView findPersons(@RequestParam(required = true) String name,
 			@RequestParam(required = false) Integer page) {
 		
-    	if(page == null) return new ModelAndView("redirect:find_persons.htm?name="+name+"&page=1");
+    	if(page == null) { return new ModelAndView("redirect:find_persons.htm?name="+name+"&page=1"); }
      	
     	try {
 			return new ModelAndView("annuaire_persons", 
@@ -85,8 +89,13 @@ public class AnnuaireController {
     @RequestMapping(value = "/create_person")
     public ModelAndView createPerson(HttpSession session) {
     	if(session.getAttribute("user") == null ||
-    	   !session.getAttribute("user").equals("admin"))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals("admin")) {
+    		
+    		ModelAndView modelAndView = annuairePersons(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	   	
         return new ModelAndView("edit_person", "groupes", groupeManager.findAll());
     }
@@ -113,8 +122,13 @@ public class AnnuaireController {
 
     	if(session.getAttribute("user") == null ||
     	   !session.getAttribute("user").equals("admin") && 
-    	   !session.getAttribute("user").equals(id))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals(id)) {
+    		
+    		ModelAndView modelAndView = annuairePersons(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	
     	Map<String, Object> model = new HashMap<String, Object>();
     	model.put("person", personManager.find(id));
@@ -132,8 +146,13 @@ public class AnnuaireController {
     		HttpSession session) {
     	
     	if(session.getAttribute("user") == null ||
-    	   !session.getAttribute("user").equals("admin"))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals("admin")) {
+    		
+    		ModelAndView modelAndView = annuairePersons(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     		
     	personManager.delete(id);
     	
@@ -166,8 +185,13 @@ public class AnnuaireController {
 
     	if(session.getAttribute("user") == null ||
     	   !session.getAttribute("user").equals("admin") && 
-    	   !session.getAttribute("user").equals(id))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals(id)){
+    		
+    		ModelAndView modelAndView = annuairePersons(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	
     	mail = mail.toLowerCase();
     	
@@ -260,15 +284,19 @@ public class AnnuaireController {
 	 * @return ModelAndView
 	 */
     @RequestMapping(value = "/annuaire_groupes")
-    public ModelAndView annuaireGroupes(@RequestParam(required = false) Integer page) {	
-    	if(page == null) return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
+    public ModelAndView annuaireGroupes(@RequestParam(required = false) Integer page) {
+    	    	
+    	if(page == null) { return new ModelAndView("redirect:annuaire_groupes.htm?page=1");	}
     	    	     	
     	try {
 			return new ModelAndView("annuaire_groupes", 
 			  PagesTransformer.listToPage(page, new ArrayList<Object>(groupeManager.findAll())));
     	}
     	catch(Exception e) {
-    		return new ModelAndView("redirect:annuaire_groupes.htm?page=1");
+    		ModelAndView modelAndView = annuaireGroupes(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
     	}    	
     }    
 
@@ -276,7 +304,7 @@ public class AnnuaireController {
 	public ModelAndView findGroupes(@RequestParam(required = true) String name,
 			@RequestParam(required = false) Integer page) {
 		
-    	if(page == null) return new ModelAndView("redirect:find_groupes.htm?name="+name+"&page=1");
+    	if(page == null) { return new ModelAndView("redirect:find_groupes.htm?name="+name+"&page=1"); }
      	
     	try {
 			return new ModelAndView("annuaire_groupes", 
@@ -295,8 +323,13 @@ public class AnnuaireController {
     public ModelAndView createGroupe(HttpSession session) {
     	
     	if(session.getAttribute("user") == null ||
-    	   !session.getAttribute("user").equals("admin"))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals("admin")) {
+    		
+    		ModelAndView modelAndView = annuaireGroupes(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	
         return new ModelAndView("edit_groupe");
     }
@@ -319,8 +352,13 @@ public class AnnuaireController {
     		HttpSession session) {
     	
     	if(session.getAttribute("user") == null ||
-    	   !session.getAttribute("user").equals("admin"))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals("admin")){
+    		
+    		ModelAndView modelAndView = annuaireGroupes(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	
         return new ModelAndView("edit_groupe", "groupe", groupeManager.find(id));
     }
@@ -334,8 +372,13 @@ public class AnnuaireController {
     		HttpSession session) {
     	
     	if(session.getAttribute("user") == null ||
-    	   !session.getAttribute("user").equals("admin"))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals("admin")) {
+    		
+    		ModelAndView modelAndView = annuaireGroupes(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	
     	if (groupeManager.find(id).getPersons().isEmpty()) {
     		groupeManager.delete(id);
@@ -362,8 +405,13 @@ public class AnnuaireController {
     		HttpSession session) {
     	
     	if(session.getAttribute("user") == null ||
-    	   !session.getAttribute("user").equals("admin"))
-    		return new ModelAndView("redirect:annuaire_persons.htm?page=1");
+    	   !session.getAttribute("user").equals("admin")){
+    		
+    		ModelAndView modelAndView = annuaireGroupes(1);
+    		modelAndView.getModel().put("type", "error");
+    		modelAndView.getModel().put("message", "Cette page est inaccessible.");
+    		return modelAndView;
+    	}
     	    	
     	Groupe g;
     	RegexFactory regex = new RegexFactory();
