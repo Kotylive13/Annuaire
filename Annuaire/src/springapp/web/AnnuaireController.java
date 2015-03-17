@@ -131,7 +131,10 @@ public class AnnuaireController {
     	}
     	
     	Map<String, Object> model = new HashMap<String, Object>();
-    	model.put("person", personManager.find(id));
+    	Person person = personManager.find(id);
+    	PasswordUtils passwordUtils = new PasswordUtils();
+    	person.setPassword(passwordUtils.decryptPassword(person.getPassword()));
+    	model.put("person", person);
     	model.put("groupes", groupeManager.findAll());
     	
         return new ModelAndView("edit_person", model);
@@ -266,10 +269,11 @@ public class AnnuaireController {
 		p = personManager.save(p);
 		
 		Email email = new Email();
+		PasswordUtils passwordUtils = new PasswordUtils();
 		String message;
 		message = "Bonjour, voici vos identifiants : \n\n" +
 				  "login : " + p.getId() + "\n" +
-				  "mot de passe : " + p.getPassword() + "\n\n" +
+				  "mot de passe : " + passwordUtils.decryptPassword(p.getPassword()) + "\n\n" +
 				  "Cordialement.";
 		email.send(p.getMail(), "Identifiants annuaire", message);
 		
@@ -458,10 +462,13 @@ public class AnnuaireController {
 			HttpSession session) {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
+				
+		Person person = personManager.find(login);
+		PasswordUtils passwordUtils = new PasswordUtils();
 		
 		if (login.equals("admin") && password.equals("admin") 
-			    || personManager.find(login) != null 
-			    && personManager.find(login).getPassword().equals(password)) {
+			    || person != null 
+			    && passwordUtils.decryptPassword(person.getPassword()).equals(password)) {
 			
 			session.setAttribute("user", login);
 			
@@ -520,7 +527,7 @@ public class AnnuaireController {
 			String message;
 			message = "Bonjour, voici vos nouveaux identifiants : \n\n" +
 					  "login : " + p.getId() + "\n" +
-					  "mot de passe : " + p.getPassword() + "\n\n" +
+					  "mot de passe : " + passwordUtils.decryptPassword(p.getPassword()) + "\n\n" +
 					  "Ce mot de passe a été généré automatiquement, " +
 					  "nous vous conseillons de le modifier.\n\n" +
 					  "Cordialement.";

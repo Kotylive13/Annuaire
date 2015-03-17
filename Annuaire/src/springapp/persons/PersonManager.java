@@ -60,11 +60,7 @@ public class PersonManager implements IPersonManager {
 	 */
 	@Override
 	public Person find(String id) {
-		PasswordUtils passwordUtil = new PasswordUtils();
-		Person p = em.find(Person.class, id);
-		if (p != null)
-			p.setPassword(passwordUtil.decryptPassword(p.getPassword()));
-		return p;
+		return em.find(Person.class, id);
 	}
 
 	
@@ -92,9 +88,8 @@ public class PersonManager implements IPersonManager {
 	 * @return Person
 	 */
 	public Person save(Person p) {
-		PasswordUtils passwordUtil = new PasswordUtils();
-		String password = p.getPassword();
-		p.setPassword(passwordUtil.encryptPassword(p.getPassword()));
+		PasswordUtils passwordUtils = new PasswordUtils();
+		p.setPassword(passwordUtils.encryptPassword(p.getPassword()));
 		
 		String firstName = p.getFirstName();
 		
@@ -103,7 +98,6 @@ public class PersonManager implements IPersonManager {
 		p.setLastName(p.getLastName().toUpperCase());
 		
 		p = em.merge(p);
-		p.setPassword(password);
 		return p;
 	}
 
