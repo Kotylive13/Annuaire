@@ -50,8 +50,7 @@ public class AnnuaireController {
 	 * @return ModelAndView
 	 */
     @RequestMapping(value = "/annuaire_persons")
-    public ModelAndView annuairePersons(@RequestParam(required = false) Integer page) {	
-		
+    public ModelAndView annuairePersons(@RequestParam(required = false) Integer page) {			
     	if(page == null) { return new ModelAndView("redirect:annuaire_persons.htm?page=1"); }
     	
     	try {
@@ -288,8 +287,7 @@ public class AnnuaireController {
 	 * @return ModelAndView
 	 */
     @RequestMapping(value = "/annuaire_groupes")
-    public ModelAndView annuaireGroupes(@RequestParam(required = false) Integer page) {
-    	    	
+    public ModelAndView annuaireGroupes(@RequestParam(required = false) Integer page) {    	    	
     	if(page == null) { return new ModelAndView("redirect:annuaire_groupes.htm?page=1");	}
     	    	     	
     	try {
